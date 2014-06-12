@@ -1,5 +1,14 @@
 <header>
-  <div id="logo">
-    <h1>Logo</h1>
-  </div>
+  <nav class="navbar">
+    <div class="inner">
+      <div id="logo">
+        <%= link_to 'Logo', root_path %>
+      </div>
+      <ul>
+        <li><%= link_to 'Seasons', seasons_path %></li>
+        <li><%= link_to 'Athletes', '#' %></li>
+        <li><%= link_to 'Clubs', '#' %></li>
+      </ul>
+    </div>    
+  </nav>
 </header>

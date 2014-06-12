@@ -1,0 +1,24 @@
+<h1>Seasons#index</h1>
+<p>The following seasons have been defined:</p>
+<% if @seasons.any? %>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Fixtures</th>
+      <th>Actions</th>
+    </tr>
+    <% @seasons.each do |s| %>
+    <tr>
+      <td><%= s.id %></td>
+      <td><%= s.name %></td>
+      <td>TBC</td>
+      <td><%= link_to 'Show', season_path(s) %> <%= link_to 'Edit', edit_season_path(s) %> <%=link_to "Delete", delete_season_path(s) %></td>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No seasons yet</p>
+<% end %>
+
+<%= link_to "Add season", new_season_path, class: "button large" %>
