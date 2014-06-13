@@ -21,12 +21,12 @@ describe "Home page" do
     expect(page).to  have_title('Seasons')
   end
 
-  it "has a link to the club index" do
+  pending "until Clubs controller created" "has a link to the club index" do
     click_link "Clubs"
     expect(page).to  have_title('Clubs')
   end
   
-  it "has a link to the athlete index" do
+  pending "until Athletes controller has been created" "has a link to the athlete index" do
     click_link "Athletes"
     expect(page).to  have_title('Athletes')
   end

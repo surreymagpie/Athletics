@@ -10,6 +10,7 @@ class SeasonsController < ApplicationController
 
   def new
     @season = Season.new
+    4.times { @season.fixtures.build }
   end
 
   def create
@@ -24,6 +25,7 @@ class SeasonsController < ApplicationController
   end
 
   def edit
+    (4-@season.fixtures.count).times { @season.fixtures.build }
   end
 
   def update
@@ -52,6 +54,6 @@ class SeasonsController < ApplicationController
   end
 
   def season_params
-    params.require(:season).permit(:name)
+    params.require(:season).permit(:name, :fixtures_attributes => [:id, :date, :location, :host, :_destroy])
   end
 end

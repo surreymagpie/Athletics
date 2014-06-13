@@ -1,4 +1,13 @@
 <%= form_for @season do |f| -%>
   <p><%= f.label :name, "Name" %> <%= f.text_field :name %></p>
+  <div class="fixture-fields">
+    <p>Fill in these fields with the details of the fixtures making up this season. The senior ladies and two junior races will be set up automatically.</p>
+    <%= f.fields_for :fixtures do |b| %>
+    <p><span><%= b.label :date %> <%= b.date_field :date %></span>
+        <span><%= b.label :location, "Location" %> <%= b.text_field :location %></span>
+        <span><%= b.label :host, "Host" %> <%= b.text_field :host %></span>
+        <span><%= b.label :_destroy, "Remove" %> <%= b.check_box :_destroy %></span></p>
+    <% end %>
+  </div>
   <p><%= f.submit "Submit", class: "button" %></p>
 <% end -%>
