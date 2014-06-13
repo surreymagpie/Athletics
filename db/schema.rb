@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140612202604) do
+ActiveRecord::Schema.define(version: 20140613124720) do
+
+  create_table "fixtures", force: true do |t|
+    t.date     "date"
+    t.string   "location"
+    t.string   "host"
+    t.integer  "season_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fixtures", ["date"], name: "index_fixtures_on_date"
+  add_index "fixtures", ["season_id"], name: "index_fixtures_on_season_id"
 
   create_table "seasons", force: true do |t|
     t.string   "name"

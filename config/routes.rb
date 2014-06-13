@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :seasons do
+  resources :seasons, :fixtures do
     member do
       get 'delete'
     end
