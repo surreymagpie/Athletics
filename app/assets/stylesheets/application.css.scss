@@ -13,15 +13,33 @@
  *= require_tree .
  *= require_self
  */
-
- body {
+$button-blue: #3F88CC; 
+html {
+  height: 100%;
+  font-size: 100%;
+}
+body {
   font-family: 'Droid Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.2;
+  height: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+ }
+ // sticky footer
+ .wrapper {
+  min-height: 100%;
+  margin-bottom: -3em;
+  &:after {
+    content: "";
+    display: block;
+  }
+ }
+ .wrapper:after,
+ footer {
+  height: 3em;
  }
  a {
   text-decoration: none;
@@ -35,13 +53,14 @@
   color: #fff;
   margin: 0;
  }
+footer,
 .navbar {
   background-color: #222;
   color: #fff;
   padding: 1em 0;
   ul {
-    text-align: right;
-
+    float: right;
+    // text-align: right;
   }
   li {
     list-style: none;
@@ -53,9 +72,10 @@
   }
 }
 .inner {
-  margin: 0 5%;
+  width: 95%;
+  margin: 0 auto;
+  overflow: hidden;
   & h1 {
-    margin: 0;
     line-height: 1;
   }
 }
@@ -75,4 +95,38 @@
 .error {
   background-color: lightcoral;
   color: red;
+}
+// Table styling
+table {
+    width: 80%;
+    text-align: center;
+    table-layout: fixed;
+    margin: 0 auto;
+    border: 1px solid;
+    a {
+    padding: 0.25em;
+    border-radius: 3px;
+    margin-bottom: 0.25em;
+  }
+}
+tr {
+    padding: 0.25em 0;
+    margin-bottom: .25em;
+}
+
+// Buttons
+.button {
+  display: inline-block;
+  background: $button-blue;
+  color: #fff;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}
+.large {
+  margin: 1em 0;
+  padding: 1em;
+}
+.small {
+  padding: 0.25em;
 }

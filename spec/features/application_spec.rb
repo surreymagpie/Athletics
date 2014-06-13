@@ -9,6 +9,10 @@ describe "Home page" do
   end
 
   it "has the right title" do
-    expect(page).to have_title('Surrey Ladies XC League') 
+    expect(page).to have_title('Home | Surrey Ladies XC League') 
+  end
+
+  it "has a footer" do
+    expect(page).to have_selector('footer')    
   end
 end

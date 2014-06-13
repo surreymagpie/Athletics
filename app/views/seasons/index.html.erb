@@ -13,7 +13,7 @@
       <td><%= s.id %></td>
       <td><%= s.name %></td>
       <td>TBC</td>
-      <td><%= link_to 'Show', season_path(s) %> <%= link_to 'Edit', edit_season_path(s) %> <%=link_to "Delete", delete_season_path(s) %></td>
+      <td><%= link_to 'Show', season_path(s), class: "button small" %> <%= link_to 'Edit', edit_season_path(s), class: "button small" %> <%=link_to "Delete", delete_season_path(s), class: "button small" %></td>
     </tr>
     <% end %>
   </table>
