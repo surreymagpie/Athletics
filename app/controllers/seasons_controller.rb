@@ -26,7 +26,23 @@ class SeasonsController < ApplicationController
   def edit
   end
 
+  def update
+    if @season.update(season_params)
+      flash[:success] = "Season upated successfully"
+      redirect_to seasons_path
+    else
+      flash[:error] = "Errors are present"
+      render 'edit'
+    end
+  end
+
   def delete
+  end
+
+  def destroy
+    s = @season.destroy
+    flash[:notice] = "#{s.name} has been deleted from the database"
+    redirect_to seasons_path
   end
 
   private
