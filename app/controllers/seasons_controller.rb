@@ -6,6 +6,7 @@ class SeasonsController < ApplicationController
   end
 
   def show
+    @fixtures = @season.fixtures.date_order
   end
 
   def new

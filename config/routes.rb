@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'athletes/index'
+
+  get 'clubs/index'
+
   root 'welcome#index'
 
   resources :seasons, :fixtures do

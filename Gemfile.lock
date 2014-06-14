@@ -69,8 +69,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.9.2)
-    libnotify (0.8.3)
-      ffi (>= 1.0.11)
     listen (2.7.7)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -195,7 +193,6 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
-  libnotify
   listen
   pg
   rails (= 4.1.1)
