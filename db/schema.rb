@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614155541) do
+ActiveRecord::Schema.define(version: 20140614212821) do
+
+  create_table "clubs", force: true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.string   "contact"
+    t.string   "email"
+    t.string   "url"
+    t.string   "division"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clubs", ["division", "abbr"], name: "index_clubs_on_division_and_abbr"
 
   create_table "fixtures", force: true do |t|
     t.date     "date"
