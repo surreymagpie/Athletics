@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  get 'races/show'
+
   get 'athletes/index'
 
   get 'clubs/index'
 
   root 'welcome#index'
 
-  resources :seasons, :fixtures do
+  resources :fixtures, :races
+  
+  resources :seasons do
     member do
       get 'delete'
     end

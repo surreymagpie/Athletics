@@ -7,9 +7,8 @@ describe Fixture do
   let(:host) { "Someone" }
   let(:date) { "01-05-2014" }
 
-  describe "belongs to a season" do
-    it {expect(subject).to respond_to(:season) }
-  end
+  it {expect(subject).to respond_to(:season) }
+  it {expect(subject).to respond_to(:races) }
 
   context 'without a date' do
     let(:date) { "" } 

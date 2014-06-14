@@ -18,7 +18,8 @@ class SeasonsController < ApplicationController
     @season = Season.new(season_params)
     if @season.save
       flash[:success] = "Season created successfully"
-      redirect_to seasons_path
+
+      redirect_to season_path(@season)
     else
       flash[:error] = "Errors are present"
       render 'new'
@@ -31,7 +32,7 @@ class SeasonsController < ApplicationController
 
   def update
     if @season.update(season_params)
-      flash[:success] = "Season upated successfully"
+      flash[:success] = "Season updated successfully"
       redirect_to seasons_path
     else
       flash[:error] = "Errors are present"

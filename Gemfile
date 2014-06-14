@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'listen'
   gem 'capybara'
+  gem 'launchy'
 end
 
 group :production do

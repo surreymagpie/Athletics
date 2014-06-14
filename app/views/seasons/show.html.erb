@@ -1,13 +1,16 @@
 <h1><%= @season.name %></h1>
-<ul>
+
 <% @fixtures.each_with_index do |f,i| %>
-  <li>Fixture <%= i+1 %>: 
+  <p>Fixture <%= i+1 %>: 
   <% if f.date > Date.today %>
     To be held
   <% else %>
     Held
   <% end %>
-  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>, hosted by <%= f.host %></li>
+  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>, hosted by <%= f.host %></p>
+<% f.races.each do |r| %>
+  <%= link_to r.classification, race_path(r) %><%= r.classification %></br>
 <% end %>
-</ul>
+<% end %>
+
 <%= link_to "Back to seasons index", seasons_path %>

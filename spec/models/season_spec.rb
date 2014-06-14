@@ -6,6 +6,8 @@ describe "A Season" do
 
   
   it { expect(subject).to respond_to(:name) }
+  it { expect(subject).to respond_to(:fixtures) }
+  it { expect(subject).to respond_to(:races) }
 
   context "without a name" do
     let(:name) { "" }
