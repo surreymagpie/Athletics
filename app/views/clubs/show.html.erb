@@ -1,0 +1,8 @@
+<h1><%= @club.name %> (<%= @club.abbr %>)</h1>
+
+<p>Team contact: <%= @club.contact %></p>
+<p>Email: <%= @club.email %></p>
+<p>Club website: <%= link_to @club.url, @club.url %></p>
+<p>Current division: <%= @club.division %></p>
+
+<%= link_to "Back", clubs_path, class: "button large" %>

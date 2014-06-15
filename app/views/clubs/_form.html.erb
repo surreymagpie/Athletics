@@ -1,0 +1,10 @@
+<%= form_for @club do |f| -%>
+  <p><%= f.label :name, "Name" %> <%= f.text_field :name %></p>
+  <p><%= f.label :abbr, "Abbreviation" %> <%= f.text_field :abbr %></p>
+  <p><%= f.label :contact, "Contact" %> <%= f.text_field :contact %></p>
+  <p><%= f.label :email, "Email" %> <%= f.text_field :email %></p>
+  <p><%= f.label :url, "Website" %> <%= f.text_field :url %></p>
+  <p><%= f.label :division, "Division" %> <%= f.text_field :division %> </p>
+
+  <%= f.submit "Submit", :disable_with => 'Submitting...', class: "button large" %>
+<% end -%>
