@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614212821) do
+ActiveRecord::Schema.define(version: 20140615104210) do
 
   create_table "clubs", force: true do |t|
     t.string   "name"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20140614212821) do
     t.string   "contact"
     t.string   "email"
     t.string   "url"
-    t.string   "division"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "division"
   end
 
-  add_index "clubs", ["division", "abbr"], name: "index_clubs_on_division_and_abbr"
+  add_index "clubs", ["abbr"], name: "index_clubs_on_division_and_abbr"
+  add_index "clubs", ["division"], name: "index_clubs_on_division"
 
   create_table "fixtures", force: true do |t|
     t.date     "date"
