@@ -7,10 +7,13 @@
   <% else %>
     Held
   <% end %>
-  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>, hosted by <%= f.clubs %></p>
-<% f.races.each do |r| %>
-  <%= link_to r.classification, race_path(r) %><%= r.classification %></br>
-<% end %>
+  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>
+  <% if f.clubs.any? %>, hosted by <%= f.clubs.length > 1 ? f.clubs.map(&:name).join(' and ') : f.clubs.first.name %>
+  <% end %>
+  </p>
+  <% f.races.each do |r| %>
+    <%= link_to r.classification, race_path(r) %></br>
+  <% end %>
 <% end %>
 
 <%= link_to "Back to seasons index", seasons_path %>

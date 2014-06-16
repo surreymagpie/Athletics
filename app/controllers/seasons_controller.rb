@@ -6,7 +6,7 @@ class SeasonsController < ApplicationController
   end
 
   def show
-    @fixtures = @season.fixtures.date_order
+    @fixtures = @season.fixtures
   end
 
   def new
@@ -52,10 +52,10 @@ class SeasonsController < ApplicationController
   private
 
   def find_season
-    @season = Season.find(params[:id])
+    @season = Season.includes(fixtures: [:races, :clubs]).find(params[:id])
   end
 
   def season_params
-    params.require(:season).permit(:name, :fixtures_attributes => [:id, :date, :location, :host, :_destroy])
+    params.require(:season).permit(:name, :fixtures_attributes => [:id, :date, :location, {:club_ids => []}, :_destroy])
   end
 end

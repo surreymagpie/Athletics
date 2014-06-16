@@ -17,16 +17,16 @@ describe "Creating a new season" do
     end
   end
 
-  context 'with associated fixture' do
+  context 'with a fixture' do
     before do 
       within('#fixture-0') do     
         fill_in "Date", with: "13/06/2014"
         fill_in "Location", with: "Richmond"
-        # select('clubs', :text => 'Ranelagh')
+        select 'Ranelagh', from: 'Host clubs'
       end
     end
 
-    it "also creates a fixture" do
+    it "creates the fixture" do
       expect{click_button "Submit"}.to change(Fixture, :count).by(1)
     end
     
@@ -35,7 +35,7 @@ describe "Creating a new season" do
       expect(page).to have_content('Season created successfully')
     end
 
-    it "also creates three races" do
+    it "creates three races" do
       expect{click_button "Submit"}.to change(Race, :count).by(3)
     end
   end

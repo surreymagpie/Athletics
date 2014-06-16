@@ -33,6 +33,7 @@ group :development, :test do
   gem 'listen'
   gem 'capybara'
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
 
 group :production do

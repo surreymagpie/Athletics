@@ -3,9 +3,10 @@
   <div class="fixture-fields">
     <p>Fill in these fields with the details of the fixtures making up this season. The senior ladies and two junior races will be set up automatically.</p>
     <%= f.fields_for :fixtures do |b| %>
-      <div id="fixture-<%= b.index %>"><span><%= b.label :date %> <%= b.date_field :date %></span>
+      <div id="fixture-<%= b.index %>">
+        <span><%= b.label :date %> <%= b.date_field :date %></span>
         <span><%= b.label :location, "Location" %> <%= b.text_field :location %></span>
-        <span><%= b.label :clubs, "Host clubs" %><%= b.collection_select(:clubs, Club.all, :id, :name, {multiple: true} ) %></span>
+        <span><%= b.label :club_ids, "Host clubs" %><%= b.collection_select(:club_ids, Club.all, :id, :name, {include_blank: true}, {multiple: true, size: 5} ) %></span>
         <span><%= b.label :_destroy, "Remove" %> <%= b.check_box :_destroy %></span>
       </div>
     <% end %>

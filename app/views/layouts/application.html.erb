@@ -14,6 +14,11 @@
         <%= yield %>
       </div> <!-- inner -->
     </div> <!-- wrapper -->
+  <% if Rails.env.development? %>
+    <div class="params">
+      <p><%= params.inspect %></p>
+    </div>
+  <% end %>  
   <%= render 'layouts/footer' %>
 </body>
 </html>
