@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "Creating a new season" do
   before :each do
+    Club.create(name: "Ranelagh", abbr: "RAN")
     visit new_season_path
     fill_in "Name", with: "2014 season"
   end
@@ -21,7 +22,7 @@ describe "Creating a new season" do
       within('#fixture-0') do     
         fill_in "Date", with: "13/06/2014"
         fill_in "Location", with: "Richmond"
-        fill_in "Host", with: "Ranelagh"
+        # select('clubs', :text => 'Ranelagh')
       end
     end
 
@@ -42,10 +43,10 @@ end
 
 describe "Updating an existing season" do
   let(:season) {Season.create(name: "A season with one fixture")}
-  let(:fixture) { season.fixtures.create(date: date, location: location, host: host) } 
+  let(:fixture) { season.fixtures.create(date: date, location: location) } 
   let(:date) { Date.today } 
   let(:location) { "Bushy Park" }
-  let(:host) { "Stragglers" } 
+  # let(:clubs) { "Stragglers" } 
   before do
     fixture
     visit seasons_path
@@ -59,7 +60,7 @@ describe "Updating an existing season" do
       within('#fixture-3') do     
         fill_in "Date", with: "13/06/2014"
         fill_in "Location", with: "Richmond"
-        fill_in "Host", with: "Ranelagh"
+        #fill_in "Host", with: "Ranelagh"
       end
     end
     it "adds a fixture" do

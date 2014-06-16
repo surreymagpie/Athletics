@@ -7,7 +7,7 @@
   <% else %>
     Held
   <% end %>
-  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>, hosted by <%= f.host %></p>
+  on <%= f.date.strftime("%d %B %Y") %> at <%= f.location %>, hosted by <%= f.clubs %></p>
 <% f.races.each do |r| %>
   <%= link_to r.classification, race_path(r) %><%= r.classification %></br>
 <% end %>
