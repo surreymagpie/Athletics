@@ -1,6 +1,8 @@
 class Club < ActiveRecord::Base
   validates :name, :abbr, presence: true
   before_save { self.abbr = abbr.upcase }
+  has_and_belongs_to_many :fixtures
+  has_many :races, through: :fixtures
 
 
   scope :alphabetical, -> { order('name ASC') }    

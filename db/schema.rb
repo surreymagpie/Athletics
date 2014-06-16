@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140615104210) do
+ActiveRecord::Schema.define(version: 20140616065542) do
 
   create_table "clubs", force: true do |t|
     t.string   "name"
@@ -27,10 +27,16 @@ ActiveRecord::Schema.define(version: 20140615104210) do
   add_index "clubs", ["abbr"], name: "index_clubs_on_division_and_abbr"
   add_index "clubs", ["division"], name: "index_clubs_on_division"
 
+  create_table "clubs_fixtures", id: false, force: true do |t|
+    t.integer "club_id",    null: false
+    t.integer "fixture_id", null: false
+  end
+
+  add_index "clubs_fixtures", ["club_id", "fixture_id"], name: "index_clubs_fixtures_on_club_id_and_fixture_id"
+
   create_table "fixtures", force: true do |t|
     t.date     "date"
     t.string   "location"
-    t.string   "host"
     t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"

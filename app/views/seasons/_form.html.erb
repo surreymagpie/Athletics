@@ -5,7 +5,7 @@
     <%= f.fields_for :fixtures do |b| %>
       <div id="fixture-<%= b.index %>"><span><%= b.label :date %> <%= b.date_field :date %></span>
         <span><%= b.label :location, "Location" %> <%= b.text_field :location %></span>
-        <span><%= b.label :host, "Host" %> <%= b.text_field :host %></span>
+        <span><%= b.collection_select(:clubs, Club.all, :id, :name, {multiple: true} ) %></span>
         <span><%= b.label :_destroy, "Remove" %> <%= b.check_box :_destroy %></span>
       </div>
     <% end %>

@@ -1,6 +1,7 @@
 class Fixture < ActiveRecord::Base
   belongs_to :season
   has_many :races, dependent: :destroy
+  has_and_belongs_to_many :clubs
 
   validates :date, presence: true
 
