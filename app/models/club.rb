@@ -3,6 +3,7 @@ class Club < ActiveRecord::Base
   before_save { self.abbr = abbr.upcase }
   has_and_belongs_to_many :fixtures
   has_many :races, through: :fixtures
+  has_many :athletes
 
 
   scope :alphabetical, -> { order('name ASC') }    

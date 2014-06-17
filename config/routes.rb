@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :athletes
+
   root 'welcome#index'
   get 'races/show'
   get 'athletes/index'
