@@ -137,3 +137,17 @@ tr {
   margin: 0.25em 0;
   padding: 0.25em;
 }
+
+//
+// Forms
+//
+
+.field-label {
+  display: inline-block;
+  text-align: right;
+  width: 6em;
+}
+.field-input {
+  display: inline-block;
+  margin: 0 0 1em 1em;
+}

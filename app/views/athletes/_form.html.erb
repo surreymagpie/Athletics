@@ -1,0 +1,22 @@
+<%= form_for @athlete do |f| -%>
+  <div class="field">
+    <div class="field-label"><%= f.label :first_name, "First Name" %></div>
+    <div class="field-input"><%= f.text_field :first_name %></div>
+  </div>
+  <div class="field">
+    <div class="field-label"><%= f.label :last_name, "Last Name" %></div>
+    <div class="field-input"><%= f.text_field :last_name %></div>
+  </div>
+  <div class="field">
+    <div class="field-label"><%= f.label :dob, "Date of birth" %></div>
+    <div class="field-input datepicker"><%= f.text_field :dob %></div>
+  </div>
+  <div class="field">
+    <div class="field-label"><%= f.label :club_id, "Club" %></div>
+    <div class="field-input"><%= f.collection_select(:club_id, Club.all, :id, :name) %></div>
+  </div>
+  <div class="field">
+    <div class="field-label"></div>
+    <div class="field-input"><%= f.submit "Submit", :disable_with => 'Submiting...', class: "button large" %></div>
+  </div>  
+<% end -%>

@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  resources :athletes
 
   root 'welcome#index'
-  get 'races/show'
-  get 'athletes/index'
 
-  resources :fixtures, :races
+  resources :fixtures, :races, :athletes
   
   resources :seasons, :clubs do
     member do
