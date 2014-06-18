@@ -15,9 +15,3 @@
 //= require jquery.ui.datepicker
 //= require turbolinks
 //= require_tree .
-
-$(function () {
-  $('.datepicker').datepicker({
-    dateFormat: 'dd/mm/yy'
-  })
-})
