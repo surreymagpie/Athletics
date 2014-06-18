@@ -40,9 +40,6 @@ class SeasonsController < ApplicationController
     end
   end
 
-  def delete
-  end
-
   def destroy
     s = @season.destroy
     flash[:notice] = "#{s.name} has been deleted from the database"

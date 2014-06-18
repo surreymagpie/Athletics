@@ -1,0 +1,5 @@
+<%= provide(:title, "Delete Athlete") %>
+<h1>Delete Athlete</h1>
+<p>Are you sure you wish to delete this athlete?</p>
+<h2><%= @athlete.full_name %></h2>
+<%= link_to "Delete", athlete_path, method: :delete, class: "button large" %>

@@ -6,12 +6,6 @@ class ClubsController < ApplicationController
     @div2 = Club.division_two.alphabetical
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def new
     @club = Club.new
   end
@@ -35,9 +29,6 @@ class ClubsController < ApplicationController
       flash[:error] = "Errors are present"
       render 'edit'
     end
-  end
-
-  def delete
   end
 
   def destroy

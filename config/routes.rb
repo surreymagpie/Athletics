@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :fixtures, :races, :athletes
+  resources :fixtures, :races 
   
-  resources :seasons, :clubs do
+  resources :seasons, :clubs, :athletes do
     member do
       get 'delete'
     end
