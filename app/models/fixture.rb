@@ -5,7 +5,7 @@ class Fixture < ActiveRecord::Base
 
   validates :date, presence: true
 
-  scope :date_order, -> { order('date ASC') }
+  default_scope -> { order('date ASC') }
 
   after_create :create_races
 
