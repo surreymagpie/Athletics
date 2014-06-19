@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     member do
       get 'delete'
     end
+    collection do
+      get 'import'
+      post 'upload'
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

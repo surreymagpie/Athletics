@@ -2,8 +2,9 @@ class ClubsController < ApplicationController
   before_action :find_club, only: [:show, :edit, :update, :delete, :destroy]
 
   def index
-    @div1 = Club.division_one.alphabetical
-    @div2 = Club.division_two.alphabetical
+    @div1 = Club.division(1).alphabetical
+    @div2 = Club.division(2).alphabetical
+    @others = Club.division(nil).alphabetical
   end
 
   def new
@@ -34,6 +35,15 @@ class ClubsController < ApplicationController
   def destroy
     club = @club.destroy
     flash[:notice] = "#{club.name} has been deleted"
+    redirect_to clubs_path
+  end
+
+  def import    
+  end
+
+  def upload
+    Club.import(params[:file])
+    flash[:success] = "New clubs imported."
     redirect_to clubs_path
   end
 

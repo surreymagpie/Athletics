@@ -1,0 +1,18 @@
+<%= provide(:title, "Import Clubs") %>
+<h1>Import Clubs</h1>
+<p>This form can be used to import a spreadsheet of club data. The data should be listed in columns with the following headings:</p>
+<ul>
+  <li>name</li>
+  <li>abbr</li>
+  <li>contact</li>
+  <li>email</li>
+  <li>url</li>
+  <li>division</li>
+</ul>
+<%= form_tag upload_clubs_path, multipart: true do%>
+  <div class="field">
+    <div class="field-label"><%= label_tag :file %></div>
+    <div class="field-input"><%= file_field_tag :file %></div>
+  </div>      
+    <div class="field-input"><%= submit_tag "Upload", class: "button large" %></div>
+<% end -%>

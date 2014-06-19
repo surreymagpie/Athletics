@@ -1,0 +1,24 @@
+<% if clubs.any? %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Team Manager</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% clubs.each do |c| %>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= link_to c.url, "http://#{c.url}" %></td>
+      <td><%= mail_to c.email, c.contact %></td>
+      <td><%= link_to 'Show' , club_path(c), class: "button small" %> <%= link_to 'Edit', edit_club_path(c), class: "button small" %> <%= link_to 'Delete',delete_club_path(c), class: "button small"  %> </td>
+    </tr>
+    <% end %>
+  </tbody>    
+</table> 
+<% else %>
+<p>No clubs found</p>
+<% end %>

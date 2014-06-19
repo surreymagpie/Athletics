@@ -2,51 +2,17 @@
 <h1>Clubs Index</h1>
 <p>The following clubs are currently in the database:</p>
 
-<% unless @div1.any? && @div2.any? %>
-  <p>No clubs found.</p>
-<% end %>
-
 <div id="div1">
-<% if @div1.any? %>
   <h2>Division 1</h2>
-  <table>
-      <tr>
-        <th>Name</th>
-        <th>Website</th>
-        <th>Team Manager</th>
-        <th>Actions</th>
-      </tr>
-      <% @div1.each do |c| %>
-        <tr>
-          <td><%= c.name %></td>
-          <td><%= link_to c.url, c.url %></td>
-          <td><%= mail_to c.email, c.contact %></td>
-          <td><%= link_to 'Show' , club_path(c), class: "button small" %> <%= link_to 'Edit', edit_club_path(c), class: "button small" %> <%= link_to 'Delete',delete_club_path(c), class: "button small"  %> </td>
-        </tr>
-      <% end %>
-    </table>  
-  <% end %>
+  <%= render 'table', clubs: @div1 %>
 </div>
 <div id="div2">
-  <% if @div2.any? %>
   <h2>Division 2</h2>
-      <table>
-      <tr>
-        <th>Name</th>
-        <th>Website</th>
-        <th>Team Manager</th>
-        <th>Actions</th>
-      </tr>
-      <% @div2.each do |c| %>
-        <tr>
-          <td><%= c.name %></td>
-          <td><%= link_to c.url, c.url %></td>
-          <td><%= mail_to c.email, c.contact %></td>
-          <td><%= link_to 'Show' , club_path(c), class: "button small" %> <%= link_to 'Edit', edit_club_path(c), class: "button small" %> <%= link_to 'Delete',delete_club_path(c), class: "button small"  %> </td>
-        </tr>
-      <% end %>
-    </table> 
-  <% end %>    
+  <%= render 'table', clubs: @div2 %>  
 </div>
-
+<div id="unassigned">
+  <h2>Unassigned clubs</h2>
+  <%= render 'table', clubs: @others %>
+</div>
 <%= link_to "Add new club", new_club_path, class: "button large" %>
+<%= link_to "Import clubs", import_clubs_path, class: "button large" %>
