@@ -1,4 +1,13 @@
-<h1><%= @athlete.full_name %></h1>
-<p><span class="label">Club</span><span><%= @athlete.club.name %></span></p>
-<p><span class="label">Category</span><span><%= @athlete.category(Date.today) %></span></p>
+<%= provide(:title, "#{@athlete.full_name}".html_safe) %>
+<div class="medium-6 columns small-centred">
+  <h1><%= @athlete.full_name %></h1>
+  <div class="field">
+    <div class="small-4 columns"><p>Club</p></div>
+    <div class="small-8 columns"><p><%= @athlete.club.name %></p></div>
+  </div>
+  <div class="field">
+    <div class="small-4 columns"><p>Category</p></div>
+    <div class="small-8 columns"><p><%= @athlete.category(Date.today) %></p></div>
+  </div>
 <p>The results of the last 10 races for this person will be displayed below :-)</p>
+</div>

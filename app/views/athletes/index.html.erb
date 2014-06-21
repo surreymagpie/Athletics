@@ -5,25 +5,24 @@
 <% if @athletes.any? %>
   <table>
     <thead>
-      <th>Full name</th>
-      <th>Club</th>
-      <th>Category</th>
-      <th>Actions</th>
+      <th width="35%" >Full name</th>
+      <th width="35%" >Club</th>
+      <th width="10%" >Category</th>
+      <th width="20%" >Actions</th>
     </thead>
     <tbody>
     <% @athletes.each do |a| %>
       <tr>
-        <td><%= a.full_name %> </td>
+        <td><%= link_to a.full_name, athlete_path(a) %></td>
         <td><%= a.club.name %></td>
         <td><%= a.category(Date.today) %></td>
         <td>
-          <%= link_to "Show", athlete_path(a), class: "button small" %>
-          <%= link_to "Edit", edit_athlete_path(a), class: "button small" %>
-          <%= link_to "Delete", delete_athlete_path(a), class: "button small" %>
+          <%= link_to "Edit", edit_athlete_path(a), class: "secondary button radius tiny " %>
+          <%= link_to "Delete", delete_athlete_path(a), class: "alert button radius tiny" %>
         </td>
       </tr>
     <% end %>
     </tbody>
   </table>
 <% end %>
-<%= link_to "Add an athlete", new_athlete_path, class: "button large" %>
+<%= link_to "Add an athlete", new_athlete_path, class: "button radius large" %>

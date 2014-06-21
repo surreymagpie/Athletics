@@ -17,7 +17,7 @@ class ClubsController < ApplicationController
       flash[:success] = "Club created successfully"
       redirect_to clubs_path
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class ClubsController < ApplicationController
       flash[:success] = "Club updated successfully"
       redirect_to clubs_path
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'edit'
     end
   end

@@ -11,9 +11,10 @@
   <% if f.clubs.any? %>, hosted by <%= f.clubs.length > 1 ? f.clubs.map(&:name).join(' and ') : f.clubs.first.name %>
   <% end %>
   </p>
+  <ul>
   <% f.races.each do |r| %>
-    <%= link_to r.classification, race_path(r) %></br>
-  <% end %>
+    <li><%= link_to r.classification, race_path(r) %></li>
+  <% end %>    
+  </ul>
 <% end %>
-
-<p><%= link_to "Back to seasons index", seasons_path %></p>
+<%= link_to "Back", :back, class: "secondary large button radius" %>

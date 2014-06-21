@@ -1,5 +1,8 @@
 <% if flash.any? %>
   <% flash.each do |type, msg| %>
-    <div class="flash <%= type %>"><%= msg %></div>
+    <div class="alert-box <%= type %> radius" data-alert>
+      <%= msg %>
+      <a href="" class="close">×</a>
+    </div>
   <% end %>
 <% end %>

@@ -1,5 +1,6 @@
+<%= provide(:title, "Delete season") %>
 <h1>Delete a season</h1>
 <p>Are you sure that you wish to delete this season?</p>
 <h2><%= @season.name %></h2>
 <p>Any fixtures and races associated with it will also be deleted.</p>
-<%= link_to "Confirm Delete", season_path, method: :delete, class: "button large" %>
+<%= link_to "Confirm Delete", season_path, method: :delete, class: "alert button large radius" %>

@@ -1,20 +1,18 @@
-<%= provide(:title, "Seasons") %>
+<%= provide(:title, "Seasons index") %>
 <h1>All Seasons</h1>
 <p>The following seasons have been defined:</p>
 <% if @seasons.any? %>
   <table>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Fixtures</th>
-      <th>Actions</th>
+      <th width="60%">Name</th>
+      <th width="20%">Fixtures</th>
+      <th width="20%">Actions</th>
     </tr>
     <% @seasons.each do |s| %>
     <tr>
-      <td><%= s.id %></td>
-      <td><%= s.name %></td>
+      <td><%= link_to s.name, season_path(s) %></td>
       <td><%= s.fixtures.count %></td>
-      <td><%= link_to 'Show', season_path(s), class: "button small" %> <%= link_to 'Edit', edit_season_path(s), class: "button small" %> <%=link_to "Delete", delete_season_path(s), class: "button small" %></td>
+      <td><%= link_to 'Edit', edit_season_path(s), class: "secondary button tiny radius" %> <%=link_to "Delete", delete_season_path(s), class: "alert button tiny radius" %></td>
     </tr>
     <% end %>
   </table>
@@ -22,4 +20,4 @@
   <p>No seasons yet</p>
 <% end %>
 
-<%= link_to "Add season", new_season_path, class: "button large" %>
+<%= link_to "Add season", new_season_path, class: "button large radius" %>

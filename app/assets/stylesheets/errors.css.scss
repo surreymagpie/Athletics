@@ -1,0 +1,23 @@
+$red: #f32e2e;
+
+#error_explanation {
+  padding: 0.5em;
+  border: 2px solid $red;
+  background-color: #FFF;
+  margin: 0 1em 1em;
+  color: $red;
+  li {
+    list-style: none;
+  }
+}
+
+.field_with_errors {
+  & > label {
+    color: $red;
+  }
+  & > input,
+  & > input:focus {
+    border-color: $red;
+    box-shadow: 0 0 5px $red;
+  }
+}

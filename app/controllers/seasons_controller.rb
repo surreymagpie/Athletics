@@ -21,7 +21,7 @@ class SeasonsController < ApplicationController
 
       redirect_to season_path(@season)
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'new'
     end
   end
@@ -35,7 +35,7 @@ class SeasonsController < ApplicationController
       flash[:success] = "Season updated successfully"
       redirect_to seasons_path
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'edit'
     end
   end

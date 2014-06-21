@@ -11,7 +11,7 @@ class AthletesController < ApplicationController
       flash[:success] = "Athlete added successfully"
       redirect_to athletes_path
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'new'
     end
   end
@@ -25,7 +25,7 @@ class AthletesController < ApplicationController
       flash[:success] = "Athlete update successfully"
       redirect_to athletes_path
     else
-      flash[:error] = "Errors are present"
+      flash[:alert] = "Errors are present"
       render 'edit'
     end
   end

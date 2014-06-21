@@ -1,5 +1,6 @@
+<%= provide(:title, "Delete club") %>
 <h1>Delete club</h1>
 
 <p>Are you sure you want to delete this club from the database?</p>
 <h2><%= @club.name %></h2>
-<%= link_to "Delete", club_path(@club), method: :delete, class: "button large" %>
+<%= link_to "Delete", club_path(@club), method: :delete, class: "alert button radius large" %>

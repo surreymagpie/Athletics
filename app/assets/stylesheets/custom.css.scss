@@ -1,0 +1,67 @@
+div[id^='fixture-'] {
+  clear: both;
+  display: inline-block;
+}
+
+form {
+  background: #eef2f3;
+  padding: 1em 0;
+  overflow: hidden;
+}
+
+.alert-box {
+  margin-top: 1em;
+}
+
+.field {
+  clear: left;
+  display: inline-block;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+    margin: 0.6rem 0 0 0.4rem;
+}
+
+table {
+  width: 100%;
+  .button {
+    margin: 0;
+  }
+  tr td {
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+select[multiple="multiple"] {
+    height: auto;
+}
+.f-topbar-fixed {
+  padding-bottom: 45px;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+footer,
+.page-wrap:after {
+  height: 45px;
+}
+footer .top-bar .name {
+  font-size: 0.8rem;
+  color: white;
+  line-height: 1;
+  padding-top: 1rem;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: 0px;
+  &:after {
+    display: block;
+    content: " ";
+  }
+}

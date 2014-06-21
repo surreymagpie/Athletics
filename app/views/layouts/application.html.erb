@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="wrapper">
-    <%= render 'layouts/header' %>
-      <div class="inner">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= full_title(yield(:title)) %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="page-wrap">
+      <%= render 'layouts/header' %>
+      <div class="row">
         <%= render 'layouts/flash' %>
         <%= yield %>
-      </div> <!-- inner -->
-    </div> <!-- wrapper -->
-  <% if Rails.env.development? %>
-    <div class="params">
-      <p><%= params.inspect %></p>
-    </div>
-  <% end %>  
-  <%= render 'layouts/footer' %>
-</body>
+        <% if Rails.env.development? %>
+        <div class="params small-12 columns">
+          <p><%= debug(params) %></p>
+        </div>
+        <% end %>
+      </div>
+  </div>
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

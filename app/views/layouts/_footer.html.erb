@@ -1,13 +1,15 @@
-<footer><div class="inner">
-    <div class="copyright">
-      &copy; Surrey Ladies Cross-Country League <%= Date.today.strftime("%Y") %>
-    </div>
-    <div class="quick-links">
-      <ul>
-      <li><%= link_to 'Contact', '#' %></li>
-      <li><%= link_to 'About', '#' %></li>
-      <li><%= link_to 'Help', '#' %></li>
+<footer class="contain-to-grid">
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">&copy; Surrey Ladies Cross-Country League <%= Date.today.strftime("%Y") %></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <li><%= link_to 'Contact', '#' %></li>
+        <li><%= link_to 'About', '#' %></li>
+        <li><%= link_to 'Help', '#' %></li>
       </ul>
-    </div>
-  </div>
+    </section>
+  </nav>
 </footer>

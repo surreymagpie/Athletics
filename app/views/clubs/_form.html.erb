@@ -1,31 +1,31 @@
 <%= form_for @club do |f| -%>
-<div class="field">
-  <div class="field-label"><%= f.label :name, "Name" %></div>
-  <div class="field-input"><%= f.text_field :name %></div>
-</div>
-<div class="field">
-  <div class="field-label"><%= f.label :abbr, "Abbreviation" %></div>
-  <div class="field-input"><%= f.text_field :abbr %></div>
-</div>
-<div class="field">
-  <div class="field-label"><%= f.label :contact, "Contact" %></div>
-  <div class="field-input"><%= f.text_field :contact %></div>
-</div>
-<div class="field">
-  <div class="field-label"><%= f.label :email, "Email" %></div>
-  <div class="field-input"><%= f.text_field :email %></div>
-</div>
-<div class="field">
-  <div class="field-label"><%= f.label :url, "Website" %></div>
-  <div class="field-input"><%= f.text_field :url %></div>
-</div>
-<div class="field">
-  <div class="field-label"><%= f.label :division, "Division" %></div>
-  <div class="field-input"><%= f.text_field :division %></div>
-</div>
-<div class="field">
-  <div class="field-label"></div>
-  <div class="field-input"><%= f.submit "Submit", :disable_with => 'Submitting...', class: "button large" %></div>
-  <div class="field-input"><%= link_to "Back", :back, class: "button large" %></div>
-</div>
+  <%= render 'layouts/errors', object: f.object %>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :name, "Name", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :name %></div>
+  </div>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :abbr, "Abbreviation", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :abbr %></div>
+  </div>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :contact, "Contact", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :contact %></div>
+  </div>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :email, "Email", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :email %></div>
+  </div>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :url, "Website", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :url %></div>
+  </div>
+  <div class="field">
+    <div class="small-3 columns"><%= f.label :division, "Division", class: "inline" %></div>
+    <div class="small-9 columns"><%= f.text_field :division %></div>
+  </div>
+  <div class="field">
+    <div class="small-6 columns"><%= f.submit "Submit", :disable_with => 'Submiting...', class: "button large radius" %></div>
+    <div class="small-6 columns"><%= link_to "Back", :back, class: "secondary button large radius right" %></div>
+  </div> 
 <% end -%>

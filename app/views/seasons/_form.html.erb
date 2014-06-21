@@ -1,15 +1,39 @@
+<p>Fill in these fields with the details of the fixtures making up this season. The senior ladies and two junior races will be set up automatically.</p>
 <%= form_for @season do |f| -%>
-  <p><%= f.label :name, "Name" %> <%= f.text_field :name %></p>
-  <div class="fixture-fields">
-    <p>Fill in these fields with the details of the fixtures making up this season. The senior ladies and two junior races will be set up automatically.</p>
+  <%= render 'layouts/errors', object: f.object %>
+    <div class="small-1 columns"><%= f.label :name, "Name" %></div>
+    <div class="small-4 columns end"><%= f.text_field :name %></div>
+    <div class="fixture-fields">
     <%= f.fields_for :fixtures do |b| %>
       <div id="fixture-<%= b.index %>">
-        <span><%= b.label :date %> <%= b.text_field :date, class: "datepicker" %></span>
-        <span><%= b.label :location, "Location" %> <%= b.text_field :location %></span>
-        <span><%= b.label :club_ids, "Host clubs" %><%= b.collection_select(:club_ids, Club.all, :id, :name, {include_blank: true}, {multiple: true, size: 5} ) %></span>
-        <span><%= b.label :_destroy, "Remove" %> <%= b.check_box :_destroy %></span>
+        <div class="small-12 medium-6 large-3 columns">
+          <div class="row">
+            <div class="small-4 columns"><%= b.label :date, class: "inline" %></div>
+            <div class="small-8 columns"><%= b.text_field :date, class: "datepicker" %></div>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-3 columns">
+          <div class="row">
+            <div class="small-4 columns"><%= b.label :location, "Location", class: "inline" %></div>
+            <div class="small-8 columns"><%= b.text_field :location %></div>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-4 columns">
+          <div class="row">
+            <div class="small-4 columns"><%= b.label :club_ids, "Host clubs", class: "inline" %></div>
+            <div class="small-8 columns"><%= b.collection_select(:club_ids, Club.alphabetical, :id, :name, {}, {multiple: true, size: 5} ) %></div>
+          </div>
+        </div>
+        <div class="small-12 medium-6 large-2 columns">
+          <div class="row">
+            <div class="small-4 columns"><%= b.label :_destroy, "Remove", class: "inline" %></div>
+            <div class="small-8 columns"><%= b.check_box :_destroy %></div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
-  <p><%= f.submit "Submit", class: "button" %></p>
+    <div class="small-2 columns">
+      <%= f.submit "Submit", class: "button radius" %>
+    </div>
 <% end -%>

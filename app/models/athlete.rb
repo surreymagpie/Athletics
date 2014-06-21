@@ -1,6 +1,9 @@
  class Athlete < ActiveRecord::Base
   belongs_to :club
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end
@@ -10,6 +13,7 @@
   end
 
   def category(date)
+    return "n/a" unless self.dob?
     age = self.age(date)
     case
       when age > 35 #veterans

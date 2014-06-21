@@ -2,19 +2,19 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Website</th>
-      <th>Team Manager</th>
-      <th>Actions</th>
+      <th width="25%">Name</th>
+      <th width="30%">Website</th>
+      <th width="25%">Team Manager</th>
+      <th width="20%">Actions</th>
     </tr>
   </thead>
   <tbody>
     <% clubs.each do |c| %>
     <tr>
-      <td><%= c.name %></td>
+      <td><%= link_to c.name, club_path(c) %></td>
       <td><%= link_to c.url, "http://#{c.url}" %></td>
       <td><%= mail_to c.email, c.contact %></td>
-      <td><%= link_to 'Show' , club_path(c), class: "button small" %> <%= link_to 'Edit', edit_club_path(c), class: "button small" %> <%= link_to 'Delete',delete_club_path(c), class: "button small"  %> </td>
+      <td><%= link_to 'Edit', edit_club_path(c), class: "button tiny radius secondary" %> <%= link_to 'Delete',delete_club_path(c), class: "button tiny radius alert"  %> </td>
     </tr>
     <% end %>
   </tbody>    

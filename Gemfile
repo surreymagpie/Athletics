@@ -57,3 +57,4 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 gem 'roo'
+gem 'foundation-rails'
