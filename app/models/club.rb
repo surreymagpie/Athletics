@@ -13,7 +13,7 @@ class Club < ActiveRecord::Base
   scope :division, ->(div) { where(division: div) }
 
   def self.import(file)
-    s = import_spreadsheet(file)
+    return false unless file && s = import_spreadsheet(file)
     rows = s.parse(:name => 'Club', :abbr => 'Abbr', :division => 'Division')
     rows[1..s.last_row-1].each do |row|
       # check for changes to name or abbr

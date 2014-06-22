@@ -18,9 +18,7 @@
         <%= render 'layouts/flash' %>
         <%= yield %>
         <% if Rails.env.development? %>
-        <div class="params small-12 columns">
-          <p><%= debug(params) %></p>
-        </div>
+        <div class="params small-12 columns"><%= debug(params) %></div>
         <% end %>
       </div>
   </div>

@@ -58,3 +58,4 @@ gem 'unicorn'
 
 gem 'roo'
 gem 'foundation-rails'
+gem 'pry'

@@ -42,9 +42,13 @@ class ClubsController < ApplicationController
   end
 
   def upload
-    Club.import(params[:file])
-    flash[:success] = "New clubs imported."
-    redirect_to clubs_path
+    if Club.import(params[:file])
+      flash[:success] = "New clubs imported."
+      redirect_to clubs_path
+    else
+      flash[:alert] = "Invalid file chosen"
+      render 'import'
+    end
   end
 
   private

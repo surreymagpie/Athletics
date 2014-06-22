@@ -1,22 +1,28 @@
 require "rails_helper"
 
 feature "Importing club data" do
+  let(:file) {   "/home/rob/Desktop/clubs.xlsx" } 
+
   before :each do
     visit clubs_path
     click_link "Import"
-    attach_file "File", "/home/rob/Desktop/clubs.xlsx"
-    click_button "Upload"
+    attach_file "file", file
   end
   
   scenario "club data" do
+    click_button "Upload" 
     expect(page.status_code).to be(200)
   end
 
   scenario "increases the number of clubs" do
-    expect{ Club.count }.to change()
+    expect{click_button "Upload"}.to change{ Club.count }
   end
-    
-  scenario "shows any errors" do
-      pending "reason"
+  
+  feature "with no file or wrong file type" do  
+    let(:file) { nil } 
+    scenario "displays an error" do
+      click_button "Upload"
+      expect(page).to have_content{ "Invalid file chosen" }
+    end
   end
 end
