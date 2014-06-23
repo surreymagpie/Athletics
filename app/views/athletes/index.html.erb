@@ -14,7 +14,7 @@
     <% @athletes.each do |a| %>
       <tr>
         <td><%= link_to a.full_name, athlete_path(a) %></td>
-        <td><%= a.club.name %></td>
+        <td><%= a.club.name if a.club %></td>
         <td><%= a.category(Date.today) %></td>
         <td>
           <%= link_to "Edit", edit_athlete_path(a), class: "secondary button radius tiny " %>
@@ -26,3 +26,4 @@
   </table>
 <% end %>
 <%= link_to "Add an athlete", new_athlete_path, class: "button radius large" %>
+<%= link_to "Import athletes", import_athletes_path, class: "button radius large" %>

@@ -35,6 +35,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
 end
 
 group :production do
@@ -58,4 +59,3 @@ gem 'unicorn'
 
 gem 'roo'
 gem 'foundation-rails'
-gem 'pry'

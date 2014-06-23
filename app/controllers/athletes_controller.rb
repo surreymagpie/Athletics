@@ -36,6 +36,16 @@ class AthletesController < ApplicationController
     redirect_to athletes_path
   end
 
+  def upload
+    if Athlete.import(params[:file])
+      flash[:success] = "New athletes imported."
+      redirect_to athletes_path
+    else
+      flash[:alert] = "Invalid file chosen"
+      render 'import'
+    end
+  end
+
   private
 
   def athlete_params

@@ -1,0 +1,23 @@
+<%= provide(:title, "Import Athletes") %>
+<div class="small-12 medium-6 columns small-centred">
+  <h1>Import Athletes</h1>
+  <p>This form can be used to import a spreadsheet of athlete declarations data. The data should be listed in columns with the following headings:</p>
+  <ul>
+    <li>first_name</li>
+    <li>last_name</li>
+    <li>dob</li>
+    <li>club abbreviation</li>
+    <li>bib</li>
+  </ul>
+  <%= form_tag upload_athletes_path, multipart: true do%>
+  <div class="field">
+    <div class="small-12 columns"><%= file_field_tag :file %></div>
+  </div>   
+  <div class="field">
+    <div class="small-12 columns">
+      <%= submit_tag "Upload", class: "button large radius" %></div>
+    </div>
+<% end -%>
+</div>
+
+
