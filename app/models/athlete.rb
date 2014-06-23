@@ -14,6 +14,10 @@
     ((date - self.dob)/365.23).to_i
   end
 
+  def second_claim?
+    self.second_claim
+  end
+
   def category(date)
     return "n/a" unless self.dob?
     age = self.age(date)
@@ -64,9 +68,5 @@
       athlete ||= new
       athlete.update_attributes(first_name: first_name, last_name: last_name, dob: dob, bib: bib, club_id: club_id)
     end
-  end
- 
-  def find_athlete(first_name, last_name, dob)
-    
   end
 end
