@@ -1,7 +1,7 @@
 <%= provide(:title, "Athletes Index") %>
 <h1>Athletes Index</h1>
 <p>There are <%= pluralize(@athletes.count, "athlete") %> in the database</p>
-
+<%= will_paginate @athletes %>
 <% if @athletes.any? %>
   <table>
     <thead>

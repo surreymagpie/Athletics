@@ -17,7 +17,7 @@ class AthletesController < ApplicationController
   end
 
   def index
-    @athletes = Athlete.all
+    @athletes = Athlete.paginate(page: params[:page])
   end
 
   def update

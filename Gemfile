@@ -59,3 +59,4 @@ gem 'unicorn'
 
 gem 'roo'
 gem 'foundation-rails'
+gem 'will_paginate'
