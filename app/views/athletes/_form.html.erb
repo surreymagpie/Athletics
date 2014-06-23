@@ -17,6 +17,10 @@
     <div class="small-9 columns"><%= f.collection_select(:club_id, Club.all, :id, :name) %></div>
   </div>
   <div class="field">
+    <div class="small-3 columns"><%= f.label :second_claim, class: "inline" %></div>
+    <div class="small-1 columns end"><%= f.check_box :second_claim %></div>
+  </div>
+  <div class="field">
      <div class="small-6 columns"><%= f.submit "Submit", :disable_with => 'Submiting...', class: "button large radius" %></div>
     <div class="small-6 columns"><%= link_to "Back", :back, class: "secondary button large radius right" %></div>
   </div> 

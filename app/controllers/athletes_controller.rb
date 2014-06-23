@@ -49,7 +49,7 @@ class AthletesController < ApplicationController
   private
 
   def athlete_params
-    params.require(:athlete).permit(:first_name, :last_name, :dob, :club_id, :bib)
+    params.require(:athlete).permit(:first_name, :last_name, :dob, :club_id, :bib, :second_claim)
   end
 
   def find_athlete
