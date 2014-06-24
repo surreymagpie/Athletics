@@ -17,7 +17,10 @@ class AthletesController < ApplicationController
   end
 
   def index
-    @athletes = Athlete.paginate(page: params[:page])
+    respond_to do |format|
+      format.html { @athletes = Athlete.paginate(page: params[:page]) }
+      format.csv { render text: Athlete.to_csv }      
+    end
   end
 
   def update

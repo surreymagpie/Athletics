@@ -3,29 +3,7 @@
 <p>There are <%= pluralize(@athletes.count, "athlete") %> in the database</p>
 <%= will_paginate @athletes %>
 <% if @athletes.any? %>
-  <table>
-    <thead>
-      <th width="35%" >Full name</th>
-      <th width="30%" >Club</th>
-      <th width="5%"  class="center">Second Claim</th>
-      <th width="10%" class="center">Category</th>
-      <th width="20%" class="center">Actions</th>
-    </thead>
-    <tbody>
-    <% @athletes.each do |a| %>
-      <tr>
-        <td><%= link_to a.full_name, athlete_path(a) %></td>
-        <td><%= a.club.name if a.club %></td>
-        <td class="center"><% if a.second_claim? %>&#10004;<% end %></td>
-        <td class="center"><%= a.category(Date.today) %></td>
-        <td class="center">
-          <%= link_to "Edit", edit_athlete_path(a), class: "secondary button radius tiny " %>
-          <%= link_to "Delete", delete_athlete_path(a), class: "alert button radius tiny" %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= render 'shared/athlete_table', athletes: @athletes %>
 <% end %>
 <%= link_to "Add an athlete", new_athlete_path, class: "button radius large" %>
 <%= link_to "Import athletes", import_athletes_path, class: "button radius large" %>

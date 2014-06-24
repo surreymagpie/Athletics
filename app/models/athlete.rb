@@ -69,4 +69,13 @@
       athlete.update_attributes(first_name: first_name, last_name: last_name, dob: dob, bib: bib, club_id: club_id)
     end
   end
+
+  def self.to_csv(options ={})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |athlete|
+        csv << athlete.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

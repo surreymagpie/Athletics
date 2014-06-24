@@ -1,5 +1,6 @@
 class ClubsController < ApplicationController
-  before_action :find_club, only: [:show, :edit, :update, :delete, :destroy]
+  before_action :find_club, only: [:edit, :update, :delete, :destroy]
+  before_action :find_athletes, only: [:show]
 
   def index
     @div1 = Club.division(1).alphabetical
@@ -59,5 +60,9 @@ class ClubsController < ApplicationController
 
   def find_club
     @club = Club.find(params[:id])
+  end
+
+  def find_athletes
+    @club = Club.includes(:athletes).find(params[:id])
   end
 end
