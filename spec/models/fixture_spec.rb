@@ -14,4 +14,8 @@ describe Fixture do
     let(:date) { "" } 
     it { expect(subject).to be_invalid }
   end
+
+  describe "creates three races" do
+    it { expect{ fixture.save }.to change(Race, :count).by(3) }
+  end
 end
