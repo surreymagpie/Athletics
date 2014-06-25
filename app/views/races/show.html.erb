@@ -1,2 +1,28 @@
-<h1>Races#show</h1>
-<p>Find me in app/views/races/show.html.erb</p>
+<%= provide(:title, "#{@race.classification}") %>
+<h1><%= @race.classification %> Results</h1>
+<p>Fixture held on <%= @race.fixture.date.strftime("%d %B %Y") %> at <%= @race.fixture.location %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th class="center">Position</th>
+      <th class="center">Time</th>
+      <th>Athlete</th>
+      <th>Club</th>
+      <th class="center">Div</th>
+      <th class="center">Category</th>
+      <th class="center">Div Points</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @race.results.each do |res| %>
+    <td class="center"><%= res.position %></td>
+    <td class="center"><%= res.formatted_time %></td>
+    <td><%= res.athlete.full_name %></td>
+    <td><%= res.athlete.club.name if res.athlete.club %></td>
+    <td class="center"><%= res.athlete.club.division if res.athlete.club %></td>
+    <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
+    <td class="center"></td>
+  <% end %>
+  </tbody>
+</table>

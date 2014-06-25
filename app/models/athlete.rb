@@ -2,6 +2,8 @@
   include Importable
 
   belongs_to :club
+  has_many :results
+  has_many :race, through: :results
 
   validates :first_name, presence: true
   validates :last_name, presence: true
