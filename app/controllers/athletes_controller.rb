@@ -18,15 +18,19 @@ class AthletesController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html { @athletes = Athlete.paginate(page: params[:page]) }
+      format.html { @athletes = Athlete.order('last_name ASC').paginate(page: params[:page]) }
       format.csv { render text: Athlete.to_csv }      
     end
+  end
+
+  def edit
+    session[:return_to] ||= request.referer
   end
 
   def update
     if @athlete.update(athlete_params)
       flash[:success] = "Athlete update successfully"
-      redirect_to athletes_path
+      redirect_to session.delete(:return_to)
     else
       flash[:alert] = "Errors are present"
       render 'edit'
