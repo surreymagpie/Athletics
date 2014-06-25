@@ -26,7 +26,7 @@ class AthletesController < ApplicationController
   def update
     if @athlete.update(athlete_params)
       flash[:success] = "Athlete update successfully"
-      redirect_to athletes_path
+      redirect_to :back
     else
       flash[:alert] = "Errors are present"
       render 'edit'
