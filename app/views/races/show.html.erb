@@ -16,13 +16,15 @@
   </thead>
   <tbody>
   <% @race.results.each do |res| %>
-    <td class="center"><%= res.position %></td>
-    <td class="center"><%= res.formatted_time %></td>
-    <td><%= res.athlete.full_name %></td>
-    <td><%= res.athlete.club.name if res.athlete.club %></td>
-    <td class="center"><%= res.athlete.club.division if res.athlete.club %></td>
-    <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
-    <td class="center"></td>
+    <tr>
+      <td class="center"><%= res.position %></td>
+      <td class="center"><%= res.formatted_time %></td>
+      <td><%= link_to res.athlete.full_name, athlete_path(res.athlete) %></td>
+      <td><%= res.athlete.club.name if res.athlete.club %></td>
+      <td class="center"><%= res.athlete.club.division if res.athlete.club %></td>
+      <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
+      <td class="center"></td>
+    </tr>
   <% end %>
   </tbody>
 </table>

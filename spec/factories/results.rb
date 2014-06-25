@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :result do
-    athlete nil
+    athlete FactoryGirl.create :athlete
     race nil
     position 1
-    time 6000
+    str_time "18:23"
     division 2
     category "U13"
     club "RAN"

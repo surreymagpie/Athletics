@@ -3,10 +3,10 @@ class Club < ActiveRecord::Base
   include Importable
 
   validates :name, :abbr, presence: true
-  before_save { self.abbr = abbr.upcase }
+  before_save { self.abbr = abbr.to_s.upcase }
   has_and_belongs_to_many :fixtures
   has_many :races, through: :fixtures
-  has_many :athletes
+  has_many :athletes, dependent: :destroy
 
 
   scope :alphabetical, -> { order('name ASC') }    

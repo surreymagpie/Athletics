@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :fixtures, :races 
   
-  resources :seasons, :clubs, :athletes do
+  resources :seasons, :clubs, :athletes, :results do
     member do
       get 'delete'
     end

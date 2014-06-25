@@ -6,6 +6,10 @@ class ClubsController < ApplicationController
     @div1 = Club.division(1).alphabetical
     @div2 = Club.division(2).alphabetical
     @others = Club.division(nil).alphabetical
+    respond_to do |format|
+      format.html
+      format.csv { render text: Club.to_csv }
+    end
   end
 
   def new

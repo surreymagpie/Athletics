@@ -1,7 +1,7 @@
 <%= provide(:title, "Clubs index") %>
 <h1>Clubs Index</h1>
 <p>The following clubs are currently in the database:</p>
-
+<p>Download as <%= link_to "CSV", clubs_path(format: 'csv'), class: "button tiny radius" %></p>
 <div id="div1">
   <h2>Division 1</h2>
   <%= render 'table', clubs: @div1 %>

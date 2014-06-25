@@ -1,0 +1,22 @@
+<%= form_for @result do |f| -%>
+  <div class="field">
+    <div class="small-4 columns"><%= f.label :race_id, "Race" %></div>
+    <div class="small-8 columns"><%= f.collection_select :race_id, Race.recent, :id, :full_race_name %></div>
+  </div>
+  <div class="field">
+    <div class="small-4 columns"><%= f.label :position, "Position" %></div>
+    <div class="small-8 columns"><%= f.text_field :position %></div>
+  </div>
+  <div class="field">
+    <div class="small-4 columns"><%= f.label :str_time, "Time (mm:ss)" %></div>
+    <div class="small-8 columns"><%= f.text_field :str_time %></div>
+  </div>
+  <div class="field">
+    <div class="small-4 columns"><%= f.label :bib, "Race Bib" %></div>
+    <div class="small-8 columns"><%= f.text_field :bib %></div>
+  </div>
+  <div class="field">
+    <div class="small-6 columns"><%= f.submit "Submit", :disable_with => 'Submiting...', class: "button large radius" %></div>
+    <div class="small-6 columns"><%= link_to 'Back', :back, class: "right button large radius secondary" %></div>
+  </div>
+<% end -%>

@@ -3,7 +3,7 @@
 
   belongs_to :club
   has_many :results
-  has_many :race, through: :results
+  has_many :races, through: :results
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -69,15 +69,6 @@
       athlete = athlete.size >= 1 ? athlete.select{ |a| a.last_name == last_name }.first : nil
       athlete ||= new
       athlete.update_attributes(first_name: first_name, last_name: last_name, dob: row['dob'], bib: row['bib'], club_id: club_id, second_claim: row['second_claim'])
-    end
-  end
-
-  def self.to_csv(options ={})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |athlete|
-        csv << athlete.attributes.values_at(*column_names)
-      end
     end
   end
 end

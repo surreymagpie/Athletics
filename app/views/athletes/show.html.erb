@@ -12,3 +12,27 @@
   </div>
 <p>The results of the last 10 races for this person will be displayed below :-)</p>
 </div>
+<div class="large-12 columns">
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Time</th>
+        <th>Position</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @athlete.results.each do |r| %>
+      <tr>
+        <td><%= r.fixture.date %></td>
+        <td><%= r.fixture.location %></td>
+        <td><%= r.formatted_time %></td>
+        <td><%= r.position %></td>
+        <td><%= r.category %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

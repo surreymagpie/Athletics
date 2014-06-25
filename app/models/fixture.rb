@@ -6,6 +6,7 @@ class Fixture < ActiveRecord::Base
   validates :date, presence: true
 
   default_scope -> { order('date ASC') }
+  scope :recent, ->{ where('date BETWEEN ? AND ?', 3.months.ago, Date.today) }
 
   after_create :create_races
 

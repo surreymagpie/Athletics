@@ -5,6 +5,10 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new
   end
 
+  def show
+    @athlete = Athlete.includes(:club, results: [:fixture]).limit(10).find(params[:id])
+  end
+
   def create
     @athlete = Athlete.new(athlete_params)
     if @athlete.save

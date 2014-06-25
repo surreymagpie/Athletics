@@ -6,4 +6,10 @@ class Race < ActiveRecord::Base
   has_many :athletes, through: :results
 
   validates :fixture_id, :classification, presence: true
+
+  scope :recent, -> { joins(:fixture).merge(Fixture.recent) }
+
+  def full_race_name
+    self.classification + ', ' + self.fixture.location
+  end
 end
