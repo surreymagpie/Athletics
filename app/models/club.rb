@@ -14,13 +14,13 @@ class Club < ActiveRecord::Base
 
   def self.import(file)
     return false unless file && s = import_spreadsheet(file)
-    rows = s.parse(:name => 'Club', :abbr => 'Abbr', :division => 'Division')
+    rows = s.parse(headers: true)
     rows[1..s.last_row-1].each do |row|
       # check for changes to name or abbr
-      name = find_by_name(row[:name])
-      abbr = find_by_abbr(row[:abbr])
+      name = find_by_name(row['name'])
+      abbr = find_by_abbr(row['abbr'])
       # skip if everything is the same
-      next if name && abbr && name.division == row[:division]
+      next if name && abbr && name.division == row['division']
       # use that club if one matches otherwise create a new one
       club = name || abbr
       club ||= new

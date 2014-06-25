@@ -56,6 +56,9 @@
         split_names = row['name'].partition(" ")
         first_name = split_names[0]
         last_name = split_names[2]
+      elsif row['first_name'] && row['last_name']
+        first_name = row['first_name']
+        last_name = row['last_name']
       else
         next
       end

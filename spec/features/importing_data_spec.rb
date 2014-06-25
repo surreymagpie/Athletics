@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Importing club data" do
-  let(:file) {   "/home/rob/Desktop/clubs.xlsx" } 
+  let(:file) { Rails.root.join('lib', 'data', 'club_test.xlsx').to_s } 
 
   before :each do
     visit clubs_path
@@ -28,7 +28,7 @@ feature "Importing club data" do
 end
 
 feature "Importing athlete data" do
-  let(:file) {   "/home/rob/Desktop/Book1.xlsx" } 
+  let(:file) { Rails.root.join('lib','data','athlete_test.xlsx').to_s } 
 
   before :each do
     visit athletes_path
@@ -41,7 +41,7 @@ feature "Importing athlete data" do
     expect(page.status_code).to be(200)
   end
 
-  scenario "increases the number of clubs" do
+  scenario "increases the number of athletes" do
     expect{click_button "Upload"}.to change{ Athlete.count }
   end
   
