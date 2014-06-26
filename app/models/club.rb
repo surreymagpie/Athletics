@@ -17,8 +17,8 @@ class Club < ActiveRecord::Base
     rows = s.parse(headers: true)
     rows[1..s.last_row-1].each do |row|
       # check for changes to name or abbr
-      name = find_by_name(row['name'])
-      abbr = find_by_abbr(row['abbr'])
+      name = find_by_name(row['name'].to_s)
+      abbr = find_by_abbr(row['abbr'].to_s)
       # skip if everything is the same
       next if name && abbr && name.division == row['division']
       # use that club if one matches otherwise create a new one
