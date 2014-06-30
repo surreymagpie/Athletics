@@ -5,8 +5,8 @@ class Result < ActiveRecord::Base
 
   attr_accessor :bib, :str_time
 
-  before_save :convert_time
-  before_save :find_athlete
+  before_create :convert_time
+  before_create :find_athlete
 
   def formatted_time
     "#{self.time/60}:#{self.time%60}"
@@ -20,10 +20,11 @@ class Result < ActiveRecord::Base
   end
 
   def find_athlete
-    athlete = Athlete.find_by_bib(self.bib)
-    self.athlete_id = athlete.id
-    self.club = athlete.club.abbr
-    self.division = athlete.club.division
-    self.category = athlete.category(self.fixture.date)
+      athlete = Athlete.find_by_bib(self.bib)
+      self.athlete_id = athlete.id
+      self.athlete_name = athlete.full_name
+      self.club = athlete.club.abbr
+      self.division = athlete.club.division
+      self.category = athlete.category(self.fixture.date)
   end
 end

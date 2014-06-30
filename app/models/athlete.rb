@@ -9,7 +9,11 @@
   validates :last_name, presence: true
 
   def full_name
-    [self.first_name, self.last_name].join(' ')
+    full_name = first_name + ' ' + last_name
+    if second_claim?
+      full_name = full_name + ' *'
+    end
+    return full_name
   end
 
   def age(date)

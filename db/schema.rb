@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625085407) do
+ActiveRecord::Schema.define(version: 20140630140124) do
 
   create_table "athletes", force: true do |t|
     t.string   "first_name"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140625085407) do
     t.string   "club"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "athlete_name"
   end
 
   add_index "results", ["athlete_id"], name: "index_results_on_athlete_id"

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :result do
-    athlete FactoryGirl.create :athlete
+    athlete nil
     race nil
     position 1
     str_time "18:23"

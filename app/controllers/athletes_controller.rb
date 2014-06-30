@@ -41,10 +41,14 @@ class AthletesController < ApplicationController
     end
   end
 
+  def delete
+    session[:return_to] ||= request.referer
+  end
+
   def destroy
     a = @athlete.destroy
     flash[:notice] = "#{a.full_name} has been deleted"
-    redirect_to athletes_path
+    redirect_to session.delete(:return_to)
   end
 
   def upload

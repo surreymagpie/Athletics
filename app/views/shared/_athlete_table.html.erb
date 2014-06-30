@@ -1,7 +1,8 @@
  <table>
     <thead>
-      <th width="35%" >Full name</th>
+      <th width="30%" >Full name</th>
       <th width="30%" >Club</th>
+      <th width="5%"  class="center">Bib No.</th>
       <th width="5%"  class="center">Second Claim</th>
       <th width="10%" class="center">Category</th>
       <th width="20%" class="center">Actions</th>
@@ -11,6 +12,7 @@
       <tr>
         <td><%= link_to a.full_name, athlete_path(a) %></td>
         <td><%= link_to a.club.name, club_path(a.club) if a.club %></td>
+        <td class="center"><% if a.bib %><%= a.bib %><% end %></td>
         <td class="center"><% if a.second_claim? %>&#10004;<% end %></td>
         <td class="center"><%= a.category(Date.today) %></td>
         <td class="center">

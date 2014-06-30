@@ -5,5 +5,6 @@
 <% if @athletes.any? %>
   <%= render 'shared/athlete_table', athletes: @athletes %>
 <% end %>
+<%= will_paginate @athletes %>
 <%= link_to "Add an athlete", new_athlete_path, class: "button radius large" %>
 <%= link_to "Import athletes", import_athletes_path, class: "button radius large" %>
