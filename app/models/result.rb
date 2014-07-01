@@ -1,4 +1,6 @@
 class Result < ActiveRecord::Base
+  include Importable
+
   belongs_to :athlete
   belongs_to :race
   has_one :fixture, through: :race
@@ -26,5 +28,9 @@ class Result < ActiveRecord::Base
       self.club = athlete.club.abbr
       self.division = athlete.club.division
       self.category = athlete.category(self.fixture.date)
+  end
+
+  def self.import(file, race_id)
+    return false unless file && s = import_spreadsheet(file)
   end
 end

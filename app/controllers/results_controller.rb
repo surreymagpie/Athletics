@@ -17,7 +17,13 @@ class ResultsController < ApplicationController
     end
   end
 
-  def import
+  def upload
+    if Result.import(params[:file], params[:results][:race_id])
+      
+    else
+      flash[:alert] = "Invalid file chosen"
+      render 'import'
+    end
   end
 
   private

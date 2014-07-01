@@ -15,4 +15,8 @@ class Fixture < ActiveRecord::Base
     self.races.create(classification: "U17 / U15 Girls")
     self.races.create(classification: "U13 Girls")
   end
+
+  def location_date
+    location + ' - ' + date.strftime('%d/%m/%Y') 
+  end
 end

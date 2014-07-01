@@ -7,7 +7,7 @@
       <%= label_tag :fixture, "Fixture" %>
     </div>
     <div class="small-8 columns">
-      <%= collection_select(:fixture, :fixture_id, Fixture.all, :id, :location, include_blank: true) %>
+      <%= collection_select(:results, :fixture_id, Fixture.all, :id, :location_date, prompt: "Select the fixture") %>
     </div>
   </div>
   <div class="field">
@@ -15,7 +15,7 @@
       <%= label_tag :fixture, "Race" %>
     </div>
     <div class="small-8 columns">
-      <%= grouped_collection_select(:race, :fixture_id, Fixture.all, :races, :location, :id, :classification, include_blank: true) %>
+      <%= grouped_collection_select(:results, :race_id, Fixture.all, :races, :location_date, :id, :classification) %>
     </div>
   </div>
   <div class="field">
