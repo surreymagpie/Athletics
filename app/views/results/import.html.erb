@@ -1,2 +1,32 @@
-<h1>Results#import</h1>
-<p>Find me in app/views/results/import.html.erb</p>
+<%= provide(:title, "Import results") %>
+<div class="small-12 medium-6 columns small-centered">
+  <h1>Results import</h1>
+  <%= form_tag upload_results_path, multipart:true do |f| -%>
+  <div class="field">
+    <div class="small-4 columns">      
+      <%= label_tag :fixture, "Fixture" %>
+    </div>
+    <div class="small-8 columns">
+      <%= collection_select(:fixture, :fixture_id, Fixture.all, :id, :location, include_blank: true) %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="small-4 columns">      
+      <%= label_tag :fixture, "Race" %>
+    </div>
+    <div class="small-8 columns">
+      <%= grouped_collection_select(:race, :fixture_id, Fixture.all, :races, :location, :id, :classification, include_blank: true) %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="small-12 columns">      
+      <%= file_field_tag :file %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="small-6 columns">      
+      <%= submit_tag "Upload", class: 'button large radius' %>
+    </div>
+  </div>
+</div>
+<% end -%>
