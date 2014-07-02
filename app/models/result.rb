@@ -11,7 +11,7 @@ class Result < ActiveRecord::Base
   before_create :find_athlete
 
   def formatted_time
-    "#{self.time/60}:#{self.time%60}"
+    "#{sprintf("%02d", time/60)}:#{sprintf("%02d", time%60)}"
   end
 
   private
@@ -32,5 +32,9 @@ class Result < ActiveRecord::Base
 
   def self.import(file, race_id)
     return false unless file && s = import_spreadsheet(file)
+    rows = s.parse(headers: true)
+    rows[1..s.last_row].each do |row|
+      result=create(position: row['position'].to_i, str_time: row['time'], bib: row['bib'].to_i, race_id: race_id)
+    end
   end
 end
