@@ -20,7 +20,7 @@ class ResultsController < ApplicationController
   def upload
     if Result.import(params[:file], params[:results][:race_id] )
       flash[:success] = "Results imported"
-      redirect_to race_path(params[:results])
+      redirect_to race_path(params[:results][:race_id])
     else
       flash[:alert] = "Invalid file chosen"
       render 'import'
