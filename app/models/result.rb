@@ -5,6 +5,8 @@ class Result < ActiveRecord::Base
   belongs_to :race
   has_one :fixture, through: :race
 
+  default_scope -> {order('position ASC')}
+
   attr_accessor :bib, :str_time
 
   before_create :convert_time

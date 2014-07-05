@@ -34,7 +34,7 @@ class AthletesController < ApplicationController
   def update
     if @athlete.update(athlete_params)
       flash[:success] = "Athlete update successfully"
-      redirect_to session.delete(:return_to)
+      redirect_to session.delete(:return_to) || :back
     else
       flash[:alert] = "Errors are present"
       render 'edit'
