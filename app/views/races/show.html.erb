@@ -11,7 +11,7 @@
       <th>Club</th>
       <th class="center">Div</th>
       <th class="center">Category</th>
-      <th class="center">Div Points</th>
+      <th class="center">Points</th>
     </tr>
   </thead>
   <tbody>
@@ -21,9 +21,9 @@
       <td class="center"><%= res.formatted_time %></td>
       <td><%= link_to res.athlete_name, athlete_path(res.athlete) %></td>
       <td><%= res.club %></td>
-      <td class="center"><%= res.athlete.club.division if res.athlete.club %></td>
+      <td class="center"><%= res.division || nil %></td>
       <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
-      <td class="center"><%= res.div_points %></td>
+      <td class="center"><%= res.points %></td>
     </tr>
   <% end %>
   </tbody>
