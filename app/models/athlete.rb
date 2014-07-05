@@ -35,9 +35,9 @@
         return 'Sen'
       else
         if date.end_of_year - 121 > date #if date is before 1st Sept
-          age = self.age(date.beginning_of_year - 122) #returns age on last 1st Sept
+          age = self.age(date.beginning_of_year - 123) #returns age on last 31st Aug
         else
-          age = self.age(date.end_of_year - 121) #returns age on 1st Sept
+          age = self.age(date.end_of_year - 122) #returns age on 1st Sept
         end
         case age
           when 0..12
