@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630140124) do
+ActiveRecord::Schema.define(version: 20140705112933) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "athletes", force: true do |t|
     t.string   "first_name"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20140630140124) do
     t.boolean  "second_claim", default: false
   end
 
-  add_index "athletes", ["bib"], name: "index_athletes_on_bib"
-  add_index "athletes", ["club_id"], name: "index_athletes_on_club_id"
+  add_index "athletes", ["bib"], name: "index_athletes_on_bib", using: :btree
+  add_index "athletes", ["club_id"], name: "index_athletes_on_club_id", using: :btree
 
   create_table "clubs", force: true do |t|
     t.string   "name"
@@ -38,15 +41,15 @@ ActiveRecord::Schema.define(version: 20140630140124) do
     t.integer  "division"
   end
 
-  add_index "clubs", ["abbr"], name: "index_clubs_on_division_and_abbr"
-  add_index "clubs", ["division"], name: "index_clubs_on_division"
+  add_index "clubs", ["abbr"], name: "index_clubs_on_division_and_abbr", using: :btree
+  add_index "clubs", ["division"], name: "index_clubs_on_division", using: :btree
 
   create_table "clubs_fixtures", id: false, force: true do |t|
     t.integer "club_id",    null: false
     t.integer "fixture_id", null: false
   end
 
-  add_index "clubs_fixtures", ["club_id", "fixture_id"], name: "index_clubs_fixtures_on_club_id_and_fixture_id"
+  add_index "clubs_fixtures", ["club_id", "fixture_id"], name: "index_clubs_fixtures_on_club_id_and_fixture_id", using: :btree
 
   create_table "fixtures", force: true do |t|
     t.date     "date"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20140630140124) do
     t.datetime "updated_at"
   end
 
-  add_index "fixtures", ["date"], name: "index_fixtures_on_date"
-  add_index "fixtures", ["season_id"], name: "index_fixtures_on_season_id"
+  add_index "fixtures", ["date"], name: "index_fixtures_on_date", using: :btree
+  add_index "fixtures", ["season_id"], name: "index_fixtures_on_season_id", using: :btree
 
   create_table "races", force: true do |t|
     t.string   "classification"
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140630140124) do
     t.datetime "updated_at"
   end
 
-  add_index "races", ["fixture_id"], name: "index_races_on_fixture_id"
+  add_index "races", ["fixture_id"], name: "index_races_on_fixture_id", using: :btree
 
   create_table "results", force: true do |t|
     t.integer  "athlete_id"
@@ -79,11 +82,12 @@ ActiveRecord::Schema.define(version: 20140630140124) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "athlete_name"
+    t.integer  "div_points"
   end
 
-  add_index "results", ["athlete_id"], name: "index_results_on_athlete_id"
-  add_index "results", ["division"], name: "index_results_on_division"
-  add_index "results", ["race_id"], name: "index_results_on_race_id"
+  add_index "results", ["athlete_id"], name: "index_results_on_athlete_id", using: :btree
+  add_index "results", ["division"], name: "index_results_on_division", using: :btree
+  add_index "results", ["race_id"], name: "index_results_on_race_id", using: :btree
 
   create_table "seasons", force: true do |t|
     t.string   "name"

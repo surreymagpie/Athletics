@@ -7,7 +7,7 @@ class Result < ActiveRecord::Base
 
   default_scope -> {order('position ASC')}
 
-  attr_accessor :bib, :str_time
+  attr_accessor :bib, :str_time, :score
 
   before_create :convert_time
   before_create :find_athlete

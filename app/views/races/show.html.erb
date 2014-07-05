@@ -23,8 +23,10 @@
       <td><%= res.club %></td>
       <td class="center"><%= res.athlete.club.division if res.athlete.club %></td>
       <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
-      <td class="center"></td>
+      <td class="center"><%= res.div_points %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Calculate Scores', score_race_path %>
