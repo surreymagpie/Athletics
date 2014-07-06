@@ -2,6 +2,7 @@ class RacesController < ApplicationController
   def show
     @race = Race.includes(:results => [:athlete, :club]).find(2)
     @results = @race.results.finish_order
+    @race_scores = @race.race_scores.order('total ASC')
   end
 
   def score
@@ -23,13 +24,13 @@ class RacesController < ApplicationController
           scores = results.where(race_id: race.id, club_id: club_id).map(&:points).in_groups_of(race.scorers, results.size+10)
           suffix = 'A'
           scores.each do |score|
-            RaceScore.create(race_id:race.id, club_id: club_id, score: score.sum, team_name: Club.find(club_id).abbr + ' ' + suffix)
-            suffix.next
+            RaceScore.create(race_id:race.id, club_id: club_id, scores: score, total: score.sum, team_name: Club.find(club_id).abbr + " #{category} " + suffix)
+            suffix = suffix.next            
           end          
         end   
       end     
     else
-      results = race.results
+      results = race.results.finish_order
       score_results(results)
     end
     redirect_to race_path(params[:id])
