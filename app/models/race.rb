@@ -4,6 +4,7 @@ class Race < ActiveRecord::Base
   has_many :clubs, through: :fixture
   has_many :results
   has_many :athletes, through: :results
+  has_many :race_scores
 
   validates :fixture_id, :classification, presence: true
 

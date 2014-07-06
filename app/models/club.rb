@@ -7,6 +7,8 @@ class Club < ActiveRecord::Base
   has_and_belongs_to_many :fixtures
   has_many :races, through: :fixtures
   has_many :athletes, dependent: :destroy
+  has_many :results
+  has_many :race_scores
 
 
   scope :alphabetical, -> { order('name ASC') }    

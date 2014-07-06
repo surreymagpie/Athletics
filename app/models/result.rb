@@ -3,9 +3,11 @@ class Result < ActiveRecord::Base
 
   belongs_to :athlete
   belongs_to :race
+  belongs_to :club
   has_one :fixture, through: :race
 
-  default_scope -> {order('position ASC')}
+  scope :finish_order, -> {order('position ASC')}
+  scope :categorised, -> (category) {where(category: category)}
 
   attr_accessor :bib, :str_time, :score
 

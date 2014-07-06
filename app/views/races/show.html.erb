@@ -15,12 +15,12 @@
     </tr>
   </thead>
   <tbody>
-  <% @race.results.each do |res| %>
+  <% @results.each do |res| %>
     <tr>
       <td class="center"><%= res.position %></td>
       <td class="center"><%= res.formatted_time %></td>
       <td><%= link_to res.athlete_name, athlete_path(res.athlete) %></td>
-      <td><%= res.club %></td>
+      <td><%= res.club.name %></td>
       <td class="center"><%= res.division || nil %></td>
       <td class="center"><%= res.athlete.category(@race.fixture.date) %></td>
       <td class="center"><%= res.points %></td>

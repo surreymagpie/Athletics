@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :race_scores
+
   root 'welcome#index'
 
   resources :fixtures
