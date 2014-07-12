@@ -13,4 +13,14 @@ class Race < ActiveRecord::Base
   def full_race_name
     self.classification + ', ' + self.fixture.location
   end
+
+  def self.get_divisions(race)
+    # returns all divisions which appear in the race
+    race.results.select('distinct division ').map(&:division)
+  end
+
+  def self.get_categories(race)
+    # returns all categories which appear in the race
+    race.results.select('distinct category ').map(&:category).delete_if { |x| x == 'n/a' }
+  end
 end

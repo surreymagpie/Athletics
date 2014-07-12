@@ -1,0 +1,23 @@
+<div class="medium-6 columns flush">
+  <table>
+    <thead>
+        <%= table_titles[team_table_counter] %>
+      <tr>
+        <th width="10%"></th>
+        <th width="25%">Team</th>
+        <th width="40%">Scores</th>
+        <th width="25%">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% team_table.each_with_index do |rs, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= rs.team_name %></td>
+        <td><%= rs.scores %></td>
+        <td><%= rs.total %></td>
+      </tr>
+    <% end %>        
+    </tbody>
+  </table>
+</div>

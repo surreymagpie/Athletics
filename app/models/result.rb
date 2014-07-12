@@ -29,7 +29,7 @@ class Result < ActiveRecord::Base
       athlete = Athlete.find_by_bib(self.bib)
       self.athlete_id = athlete.id
       self.athlete_name = athlete.full_name
-      self.club = athlete.club.abbr
+      self.club_id = athlete.club.id
       self.division = athlete.club.division
       self.category = athlete.category(self.fixture.date)
   end

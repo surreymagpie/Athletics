@@ -1,7 +1,6 @@
 <%= provide(:title, "#{@race.classification}") %>
 <h1><%= @race.classification %> Results</h1>
 <p>Fixture held on <%= @race.fixture.date.strftime("%d %B %Y") %> at <%= @race.fixture.location %></p>
-
 <table>
   <thead>
     <tr>
@@ -15,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-  <% @results.each do |res| %>
+  <% @race.results.finish_order.each do |res| %>
     <tr>
       <td class="center"><%= res.position %></td>
       <td class="center"><%= res.formatted_time %></td>
@@ -28,50 +27,10 @@
   <% end %>
   </tbody>
 </table>
-<% if @race.score_by_category? %>
-  <div class="medium-6 columns">
-    <table>
-      <thead>U15
-        <tr>
-          <th></th>
-          <th>Team</th>
-          <th>Scores</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @race_scores.where('team_name LIKE ?', '%U15%').each_with_index do |rs, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= rs.team_name %></td>
-          <td><%= rs.scores %></td>
-          <td><%= rs.total %></td>
-        </tr>
-      <% end %>        
-      </tbody>
-    </table>
-  </div>
-  <div class="medium-6 columns">
-    <table>
-      <thead>U17
-        <tr>
-          <th></th>
-          <th>Team</th>
-          <th>Scores</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @race_scores.where('team_name LIKE ?', '%U17%').each_with_index do |rs, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= rs.team_name %></td>
-          <td><%= rs.scores %></td>
-          <td><%= rs.total %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-<% end %>
-<%= link_to 'Calculate Scores', score_race_path %>
+</div> <!-- row -->
+<div class="row">
+  <%= table_race_scores(@race) %>
+</div>
+<div class="row">
+  <%= link_to 'Calculate Scores', score_race_path, class: "button large radius" %>
+</div>
