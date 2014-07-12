@@ -5,8 +5,8 @@ class RacesController < ApplicationController
 
   def score
     race = Race.includes(:results).find(params[:id])
-    divisions = get_divisions(race) if race.score_by_division?
-    categories = get_categories(race) if race.score_by_category?
+    divisions = Race.get_divisions(race) if race.score_by_division?
+    categories = Race.get_categories(race) if race.score_by_category?
     if divisions && categories
       divisions.each do |div|
         categories.each do |cat|

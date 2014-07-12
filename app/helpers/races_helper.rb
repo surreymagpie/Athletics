@@ -5,8 +5,7 @@ module RacesHelper
     if race.score_by_division?
       divs = Race.get_divisions(race)
       divs.each do |div|
-        @team_table = RaceScore.joins(:club).where('race_id = ? AND clubs.division = ?', race.id, div).order('total ASC').to_a
-        # render partial: 'team_table', locals: { table_title: content_tag(:caption, "Division #{div}")}
+        @team_tables << RaceScore.joins(:club).where('race_id = ? AND clubs.division = ?', race.id, div).order('total ASC').to_a
         table_titles << content_tag(:caption, "Division #{div}")
       end      
     elsif race.score_by_category?

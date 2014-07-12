@@ -38,7 +38,8 @@ class Result < ActiveRecord::Base
     return false unless file && s = import_spreadsheet(file)
     rows = s.parse(headers: true)
     rows[1..s.last_row].each do |row|
-      result=create(position: row['position'].to_i, str_time: row['time'], bib: row['bib'].to_i, race_id: race_id)
+      result = find_or_initialize_by(race_id: race_id, position: row['position'].to_i)
+      result.update(str_time: row['time'], bib: row['bib'].to_i)
     end
   end
 end
