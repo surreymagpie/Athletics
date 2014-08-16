@@ -5,14 +5,14 @@ class RacesController < ApplicationController
 
   def score
     race = Race.includes(:results).find(params[:id])
-    divisions = Race.get_divisions(race) if race.score_by_division?
-    categories = Race.get_categories(race) if race.score_by_category?
+    divisions = race.get_divisions if race.score_by_division?
+    categories = race.get_categories if race.score_by_category?
     if divisions && categories
       divisions.each do |div|
         categories.each do |cat|
           score_race race, division: div, category: cat
         end
-      end      
+      end
     elsif divisions
       divisions.each do |div|
         score_race race, division: div
@@ -34,7 +34,7 @@ class RacesController < ApplicationController
   end
 
   def set_points(results)
-    points = 1    
+    points = 1
     results.finish_order.each do |r|
       r.update_attributes(points: points)
       points += 1
@@ -44,12 +44,16 @@ class RacesController < ApplicationController
   def team_points(race, results, options = {} )
     club_ids = results.select('distinct club_id').map(&:club_id)
     category = options[:category] || nil
+    penalty = results.size + 10
     club_ids.each do |club_id|
-      scores = results.finish_order.where(club_id: club_id).map(&:points).in_groups_of(race.scorers, results.size+10)
+      grouped_results = results.finish_order.where(club_id: club_id).in_groups_of(race.scorers, false)
       suffix = 'A'
-      scores.each do |score|
-        team_name = [Club.find(club_id).abbr, category, suffix].join(' ')
-        RaceScore.find_or_create_by(race_id:race.id, team_name: team_name).update_attributes(club_id: club_id, scores: score, total: score.sum)
+      grouped_results.each do |res|
+        team_name = [Club.find(club_id).abbr, suffix].join(' ')
+        rs = RaceScore.find_or_create_by(race_id:race.id, team_name: team_name)
+        rs.results = res
+        rs.get_scores(penalty)
+        rs.update(club_id: club_id, category: category)
         suffix = suffix.next
       end
     end
