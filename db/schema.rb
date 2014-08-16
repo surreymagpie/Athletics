@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716194035) do
+ActiveRecord::Schema.define(version: 20140717064633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20140716194035) do
     t.integer  "division"
   end
 
-  add_index "clubs", ["abbr"], name: "index_clubs_on_division_and_abbr", using: :btree
   add_index "clubs", ["division"], name: "index_clubs_on_division", using: :btree
 
   create_table "clubs_fixtures", id: false, force: true do |t|
@@ -63,16 +62,17 @@ ActiveRecord::Schema.define(version: 20140716194035) do
   add_index "fixtures", ["season_id"], name: "index_fixtures_on_season_id", using: :btree
 
   create_table "race_scores", force: true do |t|
-    t.integer  "club_id"
-    t.integer  "race_id"
     t.string   "team_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "total"
     t.integer  "scores",     array: true
     t.string   "category"
+    t.integer  "race_id"
+    t.integer  "club_id"
   end
 
+  add_index "race_scores", ["category"], name: "index_race_scores_on_category", using: :btree
   add_index "race_scores", ["club_id"], name: "index_race_scores_on_club_id", using: :btree
   add_index "race_scores", ["race_id"], name: "index_race_scores_on_race_id", using: :btree
 
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20140716194035) do
     t.string   "athlete_name"
     t.integer  "points"
     t.integer  "club_id"
+    t.integer  "race_score_id"
   end
 
   add_index "results", ["athlete_id"], name: "index_results_on_athlete_id", using: :btree
