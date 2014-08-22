@@ -16,6 +16,6 @@ describe Fixture do
   end
 
   describe "creates three races" do
-    it { expect{ fixture.save }.to change(Race, :count).by(3) }
+    it { expect{ fixture.save }.to change(Race, :count).by(CONFIG[:races].size) }
   end
 end

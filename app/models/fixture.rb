@@ -11,9 +11,9 @@ class Fixture < ActiveRecord::Base
   after_create :create_races
 
   def create_races
-    self.races.create(classification: "Senior Ladies", scorers: 5, score_by_division: true)
-    self.races.create(classification: "U17 / U15 Girls", scorers: 4, score_by_category: true)
-    self.races.create(classification: "U13 Girls", scorers: 4)
+    CONFIG[:races].each do |race|
+      self.races.create(race)
+    end
   end
 
   def location_date
