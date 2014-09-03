@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :race_scores
 
   root 'welcome#index'
+  get 'settings' => 'settings#new'
+  post 'settings' => 'settings#create'
 
   resources :fixtures
   resources :races do
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
       get 'score'
     end
   end
-  
+
   resources :seasons, :clubs, :athletes, :results do
     member do
       get 'delete'

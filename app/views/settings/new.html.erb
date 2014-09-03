@@ -1,0 +1,11 @@
+<h1>Application Configuration</h1>
+<p>Fill in the form below to save the default settings for each season.</p>
+<form action="/settings" class="settings-form" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+  <label for="fixtures">Fixtures</label>
+  <input type="number" value="1" min="1" name="fixtures" autofocus>
+  <% 3.times do |i| %>
+    <%= render 'race_fields', index: i %>
+  <% end %>
+  <input type="submit" name="submit" value="submit">
+</form>

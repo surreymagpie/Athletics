@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   private
 
   def check_config
-    redirect_to config_path unless CONFIG
+    redirect_to settings_path unless CONFIG
   end
 end
