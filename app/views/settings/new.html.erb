@@ -2,10 +2,22 @@
 <p>Fill in the form below to save the default settings for each season.</p>
 <form action="/settings" class="settings-form" method="post">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-  <label for="fixtures">Fixtures</label>
-  <input type="number" value="1" min="1" name="fixtures" autofocus>
+  <fieldset class="fixture_fields">
+    <label for="fixtures">Fixtures</label>
+    <input type="number" value="1" min="1" name="fixtures" autofocus>
+  </fieldset>
+  <fieldset class="adjust_races">
+    <p>Change no of races</p>
+    <a class="add_race" href="#">
+      <%= image_tag 'plus.svg' %>
+    </a>
+    <a class="remove_race" href="#">
+      <%= image_tag 'minus.svg' %>
+    </a>
+  </fieldset>
   <% 3.times do |i| %>
     <%= render 'race_fields', index: i %>
   <% end %>
   <input type="submit" name="submit" value="submit">
 </form>
+

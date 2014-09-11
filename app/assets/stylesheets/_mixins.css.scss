@@ -1,0 +1,7 @@
+@mixin clearfix {
+  clear: both;
+  // &:after {
+  //   display: table;
+  //   content: "";
+  // }
+}

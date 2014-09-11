@@ -37,7 +37,7 @@ class SettingsController < ApplicationController
   end
 
   def symbolise(config)
-    converts hash keys
+    # converts hash keys
     config.symbolize_keys!
     config[:races].each { |r| r.symbolize_keys! }
   end

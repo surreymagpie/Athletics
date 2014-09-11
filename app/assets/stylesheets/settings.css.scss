@@ -1,0 +1,52 @@
+fieldset {
+  margin: 0;
+  padding: 0.5em;
+  float: left;
+  &.race_fields {
+    width: 50%;
+  }
+  &.fixture_fields {
+    width: 75%;
+  }
+}
+input[type="submit"] {
+  display: table;
+  clear: both;
+}
+.adjust_races {
+  width: 25%;
+  padding: 0;
+  height: 5.75rem;
+  position: relative;
+  p {
+    font-size: 0.875rem;
+    color: #4d4d4d;
+    position: relative;
+    left: 6em;
+    top: 2.4em;
+  }
+  .add_race,
+  .remove_race {
+    position: absolute;
+    left: 2em;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    width:  2.2em;
+    height: 2.2em;
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+    text-indent: -999em;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.add_race {
+  top: 0.5em;
+}
+.remove_race {
+  bottom: 0.5em;
+}
