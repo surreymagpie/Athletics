@@ -1,5 +1,6 @@
 class SeasonsController < ApplicationController
   before_action :find_season, only: [:show, :edit, :delete, :update, :destroy]
+  before_action :check_config, only: [:new, :edit]
 
   def index
     @seasons = Season.all
@@ -54,5 +55,9 @@ class SeasonsController < ApplicationController
 
   def season_params
     params.require(:season).permit(:name, :fixtures_attributes => [:id, :date, :location, {:club_ids => []}, :_destroy])
+  end
+
+  def check_config
+    redirect_to settings_path unless CONFIG
   end
 end
