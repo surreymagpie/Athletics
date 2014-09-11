@@ -1,11 +1,15 @@
 ---
-fixtures: '4'
-races:
-- classification: Senior Ladies
-  score_by_division: '1'
-  scorers: '5'
-- classification: U17 / U15 Girls
-  score_by_category: '1'
-  scorers: '4'
-- classification: U13 Girls
-  scorers: '4'
+:fixtures: 4
+:races:
+- :classification: Senior Ladies
+  :score_by_division: true
+  :score_by_category: false
+  :scorers: 5
+- :classification: U17 / U15 Girls
+  :score_by_division: false
+  :score_by_category: true
+  :scorers: 4
+- :classification: U13 Girls
+  :score_by_division: false
+  :score_by_category: false
+  :scorers: 4
