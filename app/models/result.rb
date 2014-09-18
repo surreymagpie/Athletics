@@ -5,9 +5,11 @@ class Result < ActiveRecord::Base
   belongs_to :race
   belongs_to :club
   has_one :fixture, through: :race
+  belongs_to :race_score
 
   scope :finish_order, -> {order('position ASC')}
   scope :categorised, -> (category) {where(category: category)}
+  scope :in_division, -> (division) {where(division: division)}
 
   attr_accessor :bib, :str_time, :score
 
