@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140717064633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "athletes", force: true do |t|
+  create_table "athletes", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.date     "dob"
@@ -25,12 +24,11 @@ ActiveRecord::Schema.define(version: 20140717064633) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "second_claim", default: false
+    t.index ["bib"], name: "index_athletes_on_bib", using: :btree
+    t.index ["club_id"], name: "index_athletes_on_club_id", using: :btree
   end
 
-  add_index "athletes", ["bib"], name: "index_athletes_on_bib", using: :btree
-  add_index "athletes", ["club_id"], name: "index_athletes_on_club_id", using: :btree
-
-  create_table "clubs", force: true do |t|
+  create_table "clubs", force: :cascade do |t|
     t.string   "name"
     t.string   "abbr"
     t.string   "contact"
@@ -39,44 +37,39 @@ ActiveRecord::Schema.define(version: 20140717064633) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "division"
+    t.index ["division"], name: "index_clubs_on_division", using: :btree
   end
 
-  add_index "clubs", ["division"], name: "index_clubs_on_division", using: :btree
-
-  create_table "clubs_fixtures", id: false, force: true do |t|
+  create_table "clubs_fixtures", id: false, force: :cascade do |t|
     t.integer "club_id",    null: false
     t.integer "fixture_id", null: false
+    t.index ["club_id", "fixture_id"], name: "index_clubs_fixtures_on_club_id_and_fixture_id", using: :btree
   end
 
-  add_index "clubs_fixtures", ["club_id", "fixture_id"], name: "index_clubs_fixtures_on_club_id_and_fixture_id", using: :btree
-
-  create_table "fixtures", force: true do |t|
+  create_table "fixtures", force: :cascade do |t|
     t.date     "date"
     t.string   "location"
     t.integer  "season_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["date"], name: "index_fixtures_on_date", using: :btree
+    t.index ["season_id"], name: "index_fixtures_on_season_id", using: :btree
   end
 
-  add_index "fixtures", ["date"], name: "index_fixtures_on_date", using: :btree
-  add_index "fixtures", ["season_id"], name: "index_fixtures_on_season_id", using: :btree
-
-  create_table "race_scores", force: true do |t|
+  create_table "race_scores", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "race_id"
     t.string   "team_name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "total"
     t.integer  "scores",     array: true
     t.string   "category"
-    t.integer  "race_id"
-    t.integer  "club_id"
+    t.index ["club_id"], name: "index_race_scores_on_club_id", using: :btree
+    t.index ["race_id"], name: "index_race_scores_on_race_id", using: :btree
   end
 
-  add_index "race_scores", ["category"], name: "index_race_scores_on_category", using: :btree
-  add_index "race_scores", ["club_id"], name: "index_race_scores_on_club_id", using: :btree
-  add_index "race_scores", ["race_id"], name: "index_race_scores_on_race_id", using: :btree
-
-  create_table "races", force: true do |t|
+  create_table "races", force: :cascade do |t|
     t.string   "classification"
     t.integer  "fixture_id"
     t.datetime "created_at"
@@ -84,11 +77,10 @@ ActiveRecord::Schema.define(version: 20140717064633) do
     t.integer  "scorers"
     t.boolean  "score_by_division", default: false
     t.boolean  "score_by_category", default: false
+    t.index ["fixture_id"], name: "index_races_on_fixture_id", using: :btree
   end
 
-  add_index "races", ["fixture_id"], name: "index_races_on_fixture_id", using: :btree
-
-  create_table "results", force: true do |t|
+  create_table "results", force: :cascade do |t|
     t.integer  "athlete_id"
     t.integer  "race_id"
     t.integer  "position"
@@ -101,14 +93,13 @@ ActiveRecord::Schema.define(version: 20140717064633) do
     t.integer  "points"
     t.integer  "club_id"
     t.integer  "race_score_id"
+    t.index ["athlete_id"], name: "index_results_on_athlete_id", using: :btree
+    t.index ["club_id"], name: "index_results_on_club_id", using: :btree
+    t.index ["division"], name: "index_results_on_division", using: :btree
+    t.index ["race_id"], name: "index_results_on_race_id", using: :btree
   end
 
-  add_index "results", ["athlete_id"], name: "index_results_on_athlete_id", using: :btree
-  add_index "results", ["club_id"], name: "index_results_on_club_id", using: :btree
-  add_index "results", ["division"], name: "index_results_on_division", using: :btree
-  add_index "results", ["race_id"], name: "index_results_on_race_id", using: :btree
-
-  create_table "seasons", force: true do |t|
+  create_table "seasons", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
