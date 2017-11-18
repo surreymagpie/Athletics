@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "Importing result data" do
   before :each do
-    club = FactoryGirl.create :club
-    FactoryGirl.create :fixture
-    FactoryGirl.create :athlete, club_id: club.id
+    club = create :club
+    create :fixture
+    create :athlete, club_id: club.id
     visit import_results_path
     fixture = fixture
     select 'Richmond Park', from: 'results_fixture_id'

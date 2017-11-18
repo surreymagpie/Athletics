@@ -1,6 +1,6 @@
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :athlete do
     first_name  "Billy"
     last_name  "NoMates"

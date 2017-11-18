@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.2'
+gem 'rails', '~>5.0.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-gem 'pg'
+gem 'pg', '0.20'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ group :development, :test do
   gem 'listen'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'pry-rails'
   gem 'awesome_print'
   gem 'database_cleaner'

@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe Result, :type => :model do
   before :each do
-    club = FactoryGirl.create :club
-    athlete = FactoryGirl.create :athlete, bib: 100, club_id: club.id
-    fixture = FactoryGirl.create :fixture
+    club = create :club
+    athlete = create :athlete, bib: 100, club_id: club.id
+    fixture = create :fixture
   end
-  subject { Result.new(position: position, time: time, athlete_id: Athlete.find_by_bib(bib).id ) } 
-  let(:position) { 1 } 
-  let(:time) { 730 } 
-  let(:bib) { 100 } 
+  subject { Result.new(position: position, time: time, athlete_id: Athlete.find_by_bib(bib).id ) }
+  let(:position) { 1 }
+  let(:time) { 730 }
+  let(:bib) { 100 }
 
   it { expect(subject).to respond_to :position }
   it { expect(subject).to respond_to :time }
